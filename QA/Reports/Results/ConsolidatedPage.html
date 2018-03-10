@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Execution Summary</title>
+
+        <link rel="stylesheet" type="text/css" href="../HTML_Design_Files/CSS/design.css" />
+        <link rel="stylesheet" type="text/css" href="../HTML_Design_Files/CSS/jquery.jqplot.css" />
+        <link rel="Stylesheet" type="text/css" href="../HTML_Design_Files/CSS/jquery-ui.min.css"  />
+
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jquery.min.js"></script>
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jquery.jqplot.min.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="../HTML_Design_Files/JS/excanvas.js"></script>
+        <![endif]-->
+
+
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jqplot.barRenderer.min.js"></script> 
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jqplot.categoryAxisRenderer.min.js"></script>
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jqplot.pointLabels.min.js"></script>
+
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jqplot.highlighter.min.js"></script>
+
+        <script type="text/javascript" src="barChart.js"></script>
+        <script type="text/javascript" src="lineChart.js"></script>
+        <script type="text/javascript" src="../HTML_Design_Files/JS/jquery-ui.min.js"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#tabs").tabs();
+
+                $('#tabs').bind('tabsshow', function(event, ui) {
+                    if (ui.index === 1 && plot1._drawCount === 0) {
+                        plot1.replot();
+                    }
+                    else if (ui.index === 2 && plot2._drawCount === 0) {
+                        plot2.replot();
+                    }
+                });
+            });
+        </script>
+        
+    </head>
+    <body>
+        <table id="mainTable">
+            <tr id="header" >
+                <td id="logo"><img src="../HTML_Design_Files/IMG/fipsar.png" alt="Logo" height="70" width="140" /> <br/>                <td id="headertext">
+                    <b> Automation Test Report </b> 
+<div style="padding-right:20px;float:right"><img src="../HTML_Design_Files/IMG/logo.png" height="70" width="140" /> </i></div>                </td>
+            </tr>
+
+
+            <tr id="container">
+                <td id="menu">
+                    <ul> 
+
+ <li class="menuStyle"><a href="../index.html" >Test Reports Chart View</a></li>
+
+
+ <li class="menuStyle"><a href="Run_29\CurrentRun.html" > Execution 29 (10-03-18, 01.19 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_28\CurrentRun.html" > Execution 28 (10-03-18, 01.19 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_27\CurrentRun.html" > Execution 27 (09-03-18, 06.35 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_26\CurrentRun.html" > Execution 26 (09-03-18, 06.32 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_25\CurrentRun.html" > Execution 25 (09-03-18, 06.31 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_24\CurrentRun.html" > Execution 24 (09-03-18, 06.28 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_23\CurrentRun.html" > Execution 23 (09-03-18, 05.40 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_22\CurrentRun.html" > Execution 22 (09-03-18, 05.39 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_21\CurrentRun.html" > Execution 21 (09-03-18, 02.18 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_20\CurrentRun.html" > Execution 20 (09-03-18, 02.17 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_19\CurrentRun.html" > Execution 19 (09-03-18, 02.15 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_18\CurrentRun.html" > Execution 18 (09-03-18, 02.14 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_17\CurrentRun.html" > Execution 17 (09-03-18, 01.55 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_16\CurrentRun.html" > Execution 16 (09-03-18, 02.10 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_15\CurrentRun.html" > Execution 15 (09-03-18, 02.09 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_14\CurrentRun.html" > Execution 14 (09-03-18, 02.07 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_13\CurrentRun.html" > Execution 13 (09-03-18, 02.07 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_12\CurrentRun.html" > Execution 12 (09-03-18, 01.50 AM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_11\CurrentRun.html" > Execution 11 (08-03-18, 09.19 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_10\CurrentRun.html" > Execution 10 (08-03-18, 09.18 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_9\CurrentRun.html" > Execution 9 (08-03-18, 09.16 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_8\CurrentRun.html" > Execution 8 (08-03-18, 09.09 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_7\CurrentRun.html" > Execution 7 (08-03-18, 09.05 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_6\CurrentRun.html" > Execution 6 (08-03-18, 08.57 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_5\CurrentRun.html" > Execution 5 (08-03-18, 08.49 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_4\CurrentRun.html" > Execution 4 (08-03-18, 08.41 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_3\CurrentRun.html" > Execution 3 (08-03-18, 08.29 PM) </a></li>
+
+
+ <li class="menuStyle"><a href="Run_2\CurrentRun.html" > Execution 2 (08-03-18, 08.15 PM) </a></li>
+
+
+ <li style="padding-top: 3px;padding-bottom: 3px;"><a href="Run_1\CurrentRun.html" > Execution 1 (08-03-18, 08.12 PM) </a></li>
+
+
+                    </ul>
+                </td>
+
+
+<td id="content">
+
+                    <div id="tabs">
+                        <ul>
+                            <li><a href="#tabs-1">Line Chart</a></li>
+                            <li><a href="#tabs-2">Bar Chart</a></li>      
+                        </ul>
+                        <div id="tabs-1" style="text-align: left;">
+                            <p class="info" style="text-align: center;color: black;font-size: 14px">
+     </p>                            
+                            <div id="line" style="height: 270px;  width: 85%; margin-top: 20px;color:black;"></div>
+
+                        </div>
+                        <div id="tabs-2" style="text-align: left;">
+                            <p class="info" style="text-align: center;color: black;font-size: 14px">
+                                                           </p>
+                            <div id="bar" style="margin-top:20px; margin-left:20px; width:85%; height:300px;color:black;"></div>
+                        </div>    
+                    </div> 
+                </td>
+            </tr>

@@ -1,0 +1,8 @@
+Testcase Name: Patient_Login_Validation_chrome
+Failure StepNumber: 2
+Reason for Failure:
+	java.lang.NullPointerException
+Full Stack Trace:
+	java.lang.NullPointerException
+
+
