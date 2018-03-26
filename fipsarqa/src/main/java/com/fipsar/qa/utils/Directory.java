@@ -208,8 +208,8 @@ public class Directory {
 				patient_password=urlsProperties.getProperty("patient_password").trim();
 				provider_username=urlsProperties.getProperty("provider_userName").trim();
 				provider_password=urlsProperties.getProperty("provider_password").trim();
-				pharmacy_username=urlsProperties.getProperty("provider_userName").trim();
-				pharmacy_password=urlsProperties.getProperty("provider_password").trim();
+				pharmacy_username=urlsProperties.getProperty("pharmacy_userName").trim();
+				pharmacy_password=urlsProperties.getProperty("pharmacy_password").trim();
 				try {
 					if ((headerText != null) && (headerText.length() > 0)) {
 						ReportLabels.HEADER_TEXT.setLabel(headerText);
