@@ -238,7 +238,7 @@ public class RAOneOnOneliveSessionSubCommonMethods extends Manipulation implemen
 	public  static void raOneOnOneLiveSessionCoachLogin(WebDriver driver1) throws ClassNotFoundException, ParseException, SQLException
 	{
 		wait(driver1, "3");
-		Navigate.get(driver1, Directory.RA_Provider_Url);
+		//Navigate.get(driver1, Directory.RA_Provider_Url);
 		wait(driver1, "5");
 		Navigate.maximize(driver1);
 		WebElement Coacheslogin_logo= driver1.findElement(By.xpath(OR.COACHES_LOGIN_PAGE_LOGO_REF));

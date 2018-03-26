@@ -78,11 +78,6 @@ public class ProgramTestNG {
 				System.out.println("No Failure Test Case(s) 			   ");
 				System.out.println("===============================================");
 			}
-		}
-		
-	}
-
-	
-		
-	
+		}	
+	}	
 }

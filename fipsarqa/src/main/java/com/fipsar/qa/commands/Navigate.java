@@ -22,6 +22,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchFrameException;
@@ -48,7 +49,8 @@ public class Navigate {
 			driver.get(url);
 			if (Directory.browser.equalsIgnoreCase("chrome")) 
 			{
-			driver.manage().window().maximize();		
+			driver.manage().window().maximize();	
+			
 			}
 		}
 
@@ -161,15 +163,14 @@ public class Navigate {
 		robot.keyPress(KeyEvent.VK_ESCAPE);
 		robot.keyRelease(KeyEvent.VK_ESCAPE);
 	}
-	public static String alertOk(WebDriver driver, WebElement element) {
-		element.click();
+	public static String alertOk(WebDriver driver) {		
 		Alert alert = driver.switchTo().alert();
 		String alertText = alert.getText();
 		alert.accept();
 		return alertText;
 	}
 
-	public static void dismissAlert(WebDriver driver) {
+	public static void  dismissAlert(WebDriver driver) {
 		Alert alert = driver.switchTo().alert();
 		alert.dismiss();
 	}

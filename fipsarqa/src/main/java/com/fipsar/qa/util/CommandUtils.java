@@ -21,7 +21,9 @@ import com.fipsar.qa.commands.Manipulation;
 import com.fipsar.qa.commands.Navigate;
 import com.fipsar.qa.utils.Directory;
 
-import patient.patient_reusables;
+import com.fipsar.qa.paf_patient.patient_reusables;
+import com.fipsar.qa.paf_pharmacy.pharmacy_reusables;
+import com.fipsar.qa.paf_provider.provider_reusables;
 
 /**
  * Common methods for all kind of actions (Selenium Actions,  specific
@@ -39,8 +41,7 @@ public class CommandUtils {
 	public static String getSize = "";
 	public static String getText1 = "";
 	public static HashMap<Integer, String> getTextMap = new HashMap<Integer, String>();
-	public static String[] widgetUrlCount = new String[100];
-	public static int widgetUrls = 0;
+
 	public static String[] splitInputData;
 	/**
 	 * Locators
@@ -178,21 +179,6 @@ public class CommandUtils {
 					Manipulation.clickAt(driver, element, x, y);
 				}
 				break;
-				/*case "ClickUnavailabilityRedArea":
-				if (inputData != null) {
-					String[] coordinates = StringUtils.split(inputData, ",");
-					int x = new Integer(coordinates[0]);
-					int y = new Integer(coordinates[1].trim());
-					com.zillion.qa.realappealcoach.coach.clickUnavailabilityRedArea(driver, element, x, y);
-				} else if (referenceStep != null) {
-					int getxyref = new Integer(referenceStep);
-					String getxyref1 = getTextMap.get(Integer.valueOf(getxyref));
-					String[] coordinates = StringUtils.split(getxyref1, ",");
-					int x = new Integer(coordinates[0]);
-					int y = new Integer(coordinates[1].trim());
-					com.zillion.qa.realappealcoach.coach.clickUnavailabilityRedArea(driver, element, x, y);
-					break;
-				}*/
 
 			case "ClickAndHold":
 				Manipulation.clickAndHold(driver, element);
@@ -337,7 +323,7 @@ public class CommandUtils {
 				Navigate.goForward(driver);
 				break;
 			case "AlertOk":
-				returnObj = Navigate.alertOk(driver, element);
+				returnObj = Navigate.alertOk(driver);
 				break;
 			case "DismissAlert":
 				Navigate.dismissAlert(driver);
@@ -773,59 +759,33 @@ public class CommandUtils {
 					Assert.fail();
 				}
 				break;
-			case "Calc":
 
-				Manipulation.sikuliscriptcalc();
-				break;
-			case "Notepad":
-				Manipulation.notepad();
-				break;
-
-			case "AutoItRun":
-
-				Manipulation.autoItscripttest();
-				break;		
-			case "Flightapp":
-				int refStep1 = new Integer(referenceStep);
-				String refText = getTextMap.get(Integer.valueOf(refStep1));
-				Manipulation.flightapp(refText);
-
-				break;
-			
-			case "MediaPlayer":
-				Manipulation.movieapp();
-				break;
-			case "SwingApp":
-				if (inputData == null && referenceStep != null
-				&& !referenceStep.trim().equals("")) {
-					String[] referenceSteps = StringUtils.split(referenceStep, ",");
-					int refSteps1 = new Integer(referenceSteps[0]);
-					int refSteps2 = new Integer(referenceSteps[1]);
-					int refSteps3 = new Integer(referenceSteps[2]);
-					String getText1 = getTextMap.get(Integer.valueOf(refSteps1));
-					String getText2 = getTextMap.get(Integer.valueOf(refSteps2));
-					String getText3 = getTextMap.get(Integer.valueOf(refSteps3));
-					Manipulation.swingapp(getText1, getText2, getText3);
-					
-				}
-				break;
-				//Clicking any image using sikuli with path
-			case "SikuliClick":
-				Manipulation.sikuliClick(inputData);
-
-			case "MinimizeChrome":
-				Robot robot=new Robot();
-
-				robot.keyPress(KeyEvent.VK_ALT);
-				robot.keyPress(KeyEvent.VK_SPACE);
-				robot.keyPress(KeyEvent.VK_N);
-				robot.keyRelease(KeyEvent.VK_ALT);
-				robot.keyRelease(KeyEvent.VK_SPACE);
-				robot.keyRelease(KeyEvent.VK_N);
-				Thread.sleep(1000);
+				//PAF Common methods as follows
 			case "PatientLogin":
-			patient_reusables.patientLogin(driver);
+				patient_reusables.patientLogin(driver);
 				break;
+			case "PortalSelection": // Patient, Provider or Pharmacy
+				patient_reusables.regSelection(driver, inputData);
+				break;
+			case "PatientSSN": 
+				patient_reusables.ssnInput(driver);
+				break;
+			case "ProviderLogin":
+				provider_reusables.providerLogin(driver);
+				break;
+			case "PharmacyLogin":
+				pharmacy_reusables.pharmacyLogin(driver);
+				break;
+			case "Login":
+				patient_reusables.loginSelection(driver, inputData);
+				break;
+			case "TypeUpload":
+				Manipulation.typeupload(element, inputData);
+				break;	
+			case "SSN9Digit":
+				returnObj=pharmacy_reusables.ssnNineDigit(driver,element);
+				getTextMap.put(stepNo, returnObj.toString());
+				break;	
 			}
 		}
 		return returnObj;

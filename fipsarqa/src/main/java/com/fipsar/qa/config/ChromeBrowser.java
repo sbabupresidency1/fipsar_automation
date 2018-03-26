@@ -17,7 +17,7 @@ public class ChromeBrowser extends DefaultBrowser implements Browser {
     @Override    
     protected Capabilities createRemoteCapabilities() {
     	ChromeDriver driver = null;
-    	System.setProperty("webdriver.chrome.driver", "C:\\workspace\\grid\\chromedriver.exe");
+    	//System.setProperty("webdriver.chrome.driver", "C:\\workspace\\grid\\chromedriver.exe");
     	ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=foo;bar");
         driver = new ChromeDriver(options);

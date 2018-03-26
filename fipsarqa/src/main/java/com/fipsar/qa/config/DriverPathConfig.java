@@ -4,7 +4,7 @@ import com.fipsar.qa.utils.Platform;
 import com.fipsar.qa.utils.Utils;
 
 /**
- * Created by Babu on 2017-02-07.
+ * Created  on 07-02-2017.
  */
 public class DriverPathConfig {
     public static void setDriverPaths() {
@@ -18,6 +18,8 @@ public class DriverPathConfig {
             setPath(ApplicationConstants.GECKO_DRIVER_NAME, ApplicationConstants.GECKO_DRIVER_PATH_WINDOWS);
             setPath(ApplicationConstants.CHROME_DRIVER_NAME, ApplicationConstants.CHROME_DRIVER_PATH_WINDOWS);
             setPath(ApplicationConstants.IE_DRIVER_NAME, ApplicationConstants.IE_DRIVER_PATH);
+            setPath(ApplicationConstants.OPERA_DRIVER_NAME, ApplicationConstants.OPERA_DRIVER_PATH_WINDOWS);
+            
         } else if (osName.contains("LINUX")) {
             setPath(ApplicationConstants.GECKO_DRIVER_NAME, ApplicationConstants.GECKO_DRIVER_PATH_LINUX);
             setPath(ApplicationConstants.CHROME_DRIVER_NAME, ApplicationConstants.CHROME_DRIVER_PATH_LINUX);

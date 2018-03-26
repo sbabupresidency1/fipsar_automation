@@ -14,7 +14,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
+import org.apache.commons.io.comparator.DirectoryFileComparator;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -714,6 +716,9 @@ public class Manipulation extends CommandUtils implements OR {
 		return combinedValues;
 	}
 
+	
+
+	
 	public static void waitForAjax(WebDriver driver) {
 		new WebDriverWait(driver, 180).until(new ExpectedCondition<Boolean>() {
 			@Override
@@ -1018,7 +1023,6 @@ public class Manipulation extends CommandUtils implements OR {
 	}
 
 	/**
-
 	 * Description :   Create a common method for get Attribute value
 	 */
 	public  static String getAttribute(WebDriver driver,WebElement element)
@@ -1028,359 +1032,12 @@ public class Manipulation extends CommandUtils implements OR {
 		return Member_Email_ID;
 	}
 
-	public static void flightapp(String refdata) throws IOException, FindFailed, InterruptedException
-	{
-		Runtime rs = Runtime.getRuntime();
-		Process app = null;
-		try {
-			app=rs.exec(Directory.testCasePath+"\\Flights Application\\FlightsGUI.exe");	
-			Screen s=new Screen();   
-			FipsarReports.add("Launch Flight booking application", "Launched Flight Booking Application successfully", null, LogAs.PASSED , null);
-			//Login to the application and negative validation
-			s.click();
-			s.type(Directory.uploadFilePath+"FlightUsername.PNG","test");
-			s.type(Directory.uploadFilePath+"FlightPassword.PNG","HP");
-			s.click(Directory.uploadFilePath+"FlightLogin.PNG");
-
-			s.wait(Directory.uploadFilePath+"LoginFailedMessage.PNG");
-			s.find(Directory.uploadFilePath+"LoginFailedMessage.PNG");
-			s.click(Directory.uploadFilePath+"LoginFailedOk.PNG");		
-			s.doubleClick(Directory.uploadFilePath+"FlightUsername.PNG");
-			s.type(Key.BACKSPACE);				
-			s.type(Directory.uploadFilePath+"FlightUsername.PNG","john");
-			s.type(Directory.uploadFilePath+"FlightPassword.PNG","HP");		
-			s.click(Directory.uploadFilePath+"FlightLogin.PNG");
-			//Select flights and order
-			s.wait(Directory.uploadFilePath+"FlightFindFlights.PNG");						
-			s.click(Directory.uploadFilePath+"FlightSearch1.PNG");
-			s.click(Directory.uploadFilePath+"FlightSearch1Portland.PNG");
-			s.click(Directory.uploadFilePath+"FlightSearch2Paris.PNG");
-			s.click(Directory.uploadFilePath+"FlightSearch2Zurich.PNG");		
-			s.click(Directory.uploadFilePath+"FlightCalender.PNG");	
-			s.click(Directory.uploadFilePath+"nextButton.PNG");
-			s.click(Directory.uploadFilePath+"Date.PNG");
-			s.click(Directory.uploadFilePath+"SelectClass.PNG");
-			s.click(Directory.uploadFilePath+"FirstClass.PNG");
-			s.click(Directory.uploadFilePath+"TicketCount.PNG");
-			s.click(Directory.uploadFilePath+"TktCount4.PNG");
-
-
-			s.click(Directory.uploadFilePath+"FlightFindFlights.PNG");
-			s.wait(Directory.uploadFilePath+"FlightPrice.PNG");
-			s.click(Directory.uploadFilePath+"FlightSelect.PNG");
-			s.click(Directory.uploadFilePath+"SelectFlight.PNG");
-			s.wait(Directory.uploadFilePath+"PassengerName.PNG");
-			s.type(Directory.uploadFilePath+"PassengerName.PNG",refdata);
-			s.click(Directory.uploadFilePath+"Order.PNG");
-			Thread.sleep(1000);
-			s.find(Directory.uploadFilePath+"OrderVerify.PNG");
-			Thread.sleep(1000);
-			s.click(Directory.uploadFilePath+"NewSearch.PNG");
-			s.click(Directory.uploadFilePath+"SearchOrder.PNG");
-			s.type(Directory.uploadFilePath+"NameSearch.PNG",refdata);	
-			s.click(Directory.uploadFilePath+"SearchButton.PNG");
-			s.click(Directory.uploadFilePath+"Delete1st.PNG");
-
-			s.click(Directory.uploadFilePath+"SelectOrder.PNG");
-
-			s.click(Directory.uploadFilePath+"DeleteOrder.PNG");
-			s.click(Directory.uploadFilePath+"OrderDeleteYes.PNG");
-			s.click(Directory.uploadFilePath+"OrderDeleteConfirm.PNG");
-			Thread.sleep(2000);
-
-			/*  s.click(Directory.uploadFilePath+"CRMLogin.PNG");
-		    s.wait(Directory.uploadFilePath+"CRM_NewCall.PNG");
-		    s.click(Directory.uploadFilePath+"CRM_NewCall.PNG");
-		    s.type(Directory.uploadFilePath+"NewCall_Name.PNG","Babu.S");
-		    s.type(Directory.uploadFilePath+"NewCall_Address.PNG","Pammal");
-		    s.type(Directory.uploadFilePath+"NewCall_City.PNG","Chennai");
-		    //s.type(Directory.uploadFilePath+"NewCall_State.PNG","TN");
-		    s.type(Directory.uploadFilePath+"NewCall_ZIP.PNG","600005");
-		    s.click(Directory.uploadFilePath+"NewCall_CallType.PNG");
-		    s.click(Directory.uploadFilePath+"NewCall_SelectProblem.PNG");*/
-
-			/* s.type(Directory.uploadFilePath+"NotepadType.PNG","This is Nice Sikuli Tutorial!!!!");
-		    s.click(Directory.uploadFilePath+"NotepadFile.PNG");
-		    s.click(Directory.uploadFilePath+"NotepadSave.PNG");
-		    s.click(Directory.uploadFilePath+"NotepadCancel.PNG");
-		    s.click(Directory.uploadFilePath+"NotepadClose.PNG");
-		    s.click(Directory.uploadFilePath+"NotepadDontSave.PNG");*/		    
-			System.out.println("Sikuli execution completed successfully");
-		}catch(Exception e) {
-
-		}
-		finally {
-			app.destroy();
-		}
+	public static void typeupload(WebElement element, String inputData) {
+		String inputdata=Directory.uploadFilePath+inputData+".PNG";
+		element.sendKeys(inputdata);
+		System.out.println("inputdata="+inputdata);
+		
+		
 	}
-
-	public static void swingapp(String ref1, String ref2, String ref3) throws FindFailed
-	{
-		Screen s=new Screen();
-		s.click(Directory.uploadFilePath+"JavaAppIcon.PNG");
-		s.type(Directory.uploadFilePath+"SAccountName.PNG",ref1);
-		s.type(Directory.uploadFilePath+"SCompanyName.PNG",ref3);
-		s.type(Directory.uploadFilePath+"SCustomerName.PNG",ref2);
-		s.type(Directory.uploadFilePath+"SAddress.PNG","Siruseri");
-		s.click(Directory.uploadFilePath+"SMale.PNG");
-		s.click(Directory.uploadFilePath+"MSelect.PNG");
-		s.click(Directory.uploadFilePath+"SDoctor.PNG");
-		s.click(Directory.uploadFilePath+"SSubmit.PNG");
-		s.click(Directory.uploadFilePath+"SOkbutton.PNG");
-		s.click(Directory.uploadFilePath+"SClear.PNG");		
-		s.click(Directory.uploadFilePath+"Sminimize.PNG");
-	}
-
-	public static void movieapp() throws FindFailed, IOException, InterruptedException {
-
-		Runtime rs = Runtime.getRuntime();
-		Process app = null;
-		app=rs.exec("C:\\Program Files\\Windows Media Player\\wmplayer.exe");
-		try {
-			FipsarReports.add("Launch Windows Media Player", "Windows Media player successfully launched", null, LogAs.PASSED , null);
-			Screen s=new Screen();   		
-			Thread.sleep(2000);
-			s.type("o",Key.CTRL);
-			Thread.sleep(1000);
-			s.click(Directory.uploadFilePath+"Desktop.PNG");
-			s.click(Directory.uploadFilePath+"Documents.PNG");
-			//s.type(Key.ENTER);
-			s.type(Directory.uploadFilePath+"SearchFile.PNG","Video.mp4");
-			s.click(Directory.uploadFilePath+"OpenButton.PNG");
-			FipsarReports.add("Press CTRL+O to open video", "Opened dialogue box successfully", null, LogAs.PASSED , null);
-			Thread.sleep(5000);		
-			s.click(Directory.uploadFilePath+"PauseButton.PNG");
-			FipsarReports.add("Click on Pause Button", "Pause button clicked successfully", null, LogAs.PASSED , null);
-			s.mouseMove(Directory.uploadFilePath+"MouseOverSeekBar.PNG");
-			FipsarReports.add("Mouse Over on Seek Bar", "Mouse over successfully done", null, LogAs.PASSED , null);
-			s.dragDrop(Directory.uploadFilePath+"SeekBarStart.PNG", Directory.uploadFilePath+"SeekBarEnd.PNG");
-			FipsarReports.add("Drag and drop ", "Drag and Drop seekbar done ", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"PlayButton.PNG");
-			FipsarReports.add("Press Play button", "Play button pressed successfully", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"WMClose.PNG");
-			FipsarReports.add("Click on X button to close the app", "X button clicked successfully and application closed", null, LogAs.PASSED , null);			   
-			//    JOptionPane.showMessageDialog(null, "Sikuli successful", "InfoBox: " + "Sikuli", JOptionPane.INFORMATION_MESSAGE);
-
-		}
-		catch (Exception e) {}
-		finally {
-			app.destroy();
-		}
-	}
-	public static void notepad() throws FindFailed, IOException
-	{
-		Runtime rs = Runtime.getRuntime();
-		Process app = null;
-		app=rs.exec("C:\\Windows\\notepad.exe");
-		try {
-
-
-			FipsarReports.add("Launch Notepad application", "Launched Notepad Application successfully", null, LogAs.PASSED , null);
-			Screen s=new Screen();   
-			s.click(Directory.uploadFilePath+"NotepadType.PNG");
-			for(int i=0;i<10;i++) {
-				s.type(Key.ENTER);
-			}
-			s.type(Key.TAB);
-			s.type(Key.TAB);
-			s.type(Key.TAB);
-			s.type("These scenarios were automated using SIKULI.!!!!");
-			//s.type(Directory.uploadFilePath+"NotepadType.PNG","These scenarios were automated by SIKULI.!!!!");
-			FipsarReports.add("Type text in Notepad", "Typed texts successfully", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"NotepadFile.PNG");
-			FipsarReports.add("Click on File Menu", "Clicked on File Menu successfully", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"NotepadSave.PNG");
-			FipsarReports.add("Click on Save Option", "Clicked on Save option successfully", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"NotepadCancel.PNG");
-			FipsarReports.add("Click on Cancel", "Clicked on Cancel successfully", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"NotepadClose.PNG");
-			FipsarReports.add("Click on Close Button", "Clicked on Close Button successfully", null, LogAs.PASSED , null);
-			s.click(Directory.uploadFilePath+"NotepadDontSave.PNG");
-			FipsarReports.add("Click on Don't Save Button", "Clicked on Don't Save Button successfully", null, LogAs.PASSED , null);
-		}
-		catch(Exception e) {
-
-		}
-		finally {
-			app.destroy();
-		}		
-	}
-
-	public static void MobileSikuli() throws FindFailed {
-		Screen s=new Screen();
-		try {
-			s.click(Directory.uploadFilePath+"SimulatorButton.PNG");
-			s.click(Directory.uploadFilePath+"HomeButton.PNG");
-			s.click(Directory.uploadFilePath+"APIDemosicon.PNG");
-			s.click(Directory.uploadFilePath+"AppLink.PNG");
-			s.click(Directory.uploadFilePath+"AlertDialogue.PNG");
-			s.click(Directory.uploadFilePath+"OkCancelDialogue.PNG");
-			s.click(Directory.uploadFilePath+"OkCancelDialogueOkButton.PNG");
-
-			s.click(Directory.uploadFilePath+"SingleChoiseList.PNG");
-			s.click(Directory.uploadFilePath+"Satellite.PNG");
-			s.click(Directory.uploadFilePath+"StreetView.PNG");
-			s.click(Directory.uploadFilePath+"OkCancelDialogueOkButton.PNG");
-
-			s.click(Directory.uploadFilePath+"Alarm.PNG");
-			s.click(Directory.uploadFilePath+"Wednesday.PNG");
-			s.click(Directory.uploadFilePath+"Saturday.PNG");
-			s.click(Directory.uploadFilePath+"OkCancelDialogueOkButton.PNG");
-
-
-		}catch (Exception e) {}
-		finally {
-			s.click(Directory.uploadFilePath+"RecentItems.PNG");
-			s.click(Directory.uploadFilePath+"ClearAllRecent.PNG");
-			s.click(Directory.uploadFilePath+"CloseEmulator.PNG");
-		}
-	}
-
-	public static void sikuliscriptcalc() throws FindFailed, IOException, InterruptedException {
-
-		Screen s=new Screen();   
-		s.click(Directory.uploadFilePath+"startwindow.PNG");
-		FipsarReports.add("Navigating via Windows - Click on Windows button", "Windows button clicked successfully", null, LogAs.PASSED , null);
-		s.click(Directory.uploadFilePath+"Calculator.PNG");
-		FipsarReports.add("Click on Calculator icon", "Calculator launched successfully", null, LogAs.PASSED , null);
-		s.click(Directory.uploadFilePath+"Two.PNG");
-		s.click(Directory.uploadFilePath+"multiply.PNG");
-		s.click(Directory.uploadFilePath+"six.PNG");
-		s.click(Directory.uploadFilePath+"equal.PNG");
-		FipsarReports.add("Multiply two numbers", "Multiplied two numbers successfully", null, LogAs.PASSED , null);
-		s.click(Directory.uploadFilePath+"close.PNG");
-		FipsarReports.add("Close the Calculator Application", "Calculator closed successfully", null, LogAs.PASSED , null);		
-		System.out.println("Sikuli execution completed successfully");
-	}
-
-	public static void autoItscripttest() throws FindFailed, IOException, InterruptedException {
-		Screen s=new Screen();
-		s.click(Directory.uploadFilePath+"startwindow.PNG");
-		String command="D:/Calc.exe";
-
-		//	Runtime.getRuntime().exec(command);
-
-		Runtime rs = Runtime.getRuntime();
-		Process app;
-
-		app=rs.exec(command);
-		Thread.sleep(5000);
-
-		System.out.println("AutoIT execution completed successfully");
-		//app.destroy();
-	}
-	public static void sikuliClick(String imgpath) throws FindFailed, IOException, InterruptedException {
-		Screen s=new Screen();
-		s.click(Directory.uploadFilePath+imgpath+".PNG");
-
-	}
-	public static void jPay() throws FindFailed, IOException, InterruptedException {
-
-		//mobile
-
-		AndroidDriver adriver1;
-
-		File appDir = new File(Directory.MOBILE_APPPATH);
-		File app = new File(appDir, Directory.MOBILEAPP_APK_NAME);	  
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,"30" );
-		capabilities.setCapability("deviceName",Directory.MOBILE_DEVICE_NAME);
-		capabilities.setCapability("platformVersion", Directory.MOBILE_DEVICE_VERSION);
-
-		capabilities.setCapability("appActivity", "com.jpay.jpaymobileapp.base.JPayMainActivity");
-
-		capabilities.setCapability("appPackage", Directory.MOBILE_APK_APPPACKAGE); 
-		adriver1 = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-		Thread.sleep(5000);
-
-		// adriver1.pressKeyCode(AndroidKeyCode.BACK);
-		adriver1.findElement(By.xpath("//android.widget.Button[contains(@text,'OK')]")).click();		
-		System.out.println("1st");
-		Thread.sleep(1000);
-		// adriver1.findElement(By.xpath("//android.widget.Button[contains(@text,'OK')]")).click();
-		System.out.println("2nd click");
-		// adriver1.findElement(By.xpath("//android.widget.Button[@resource-id='resource:id/button1']")).click();
-
-		adriver1.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
-		Thread.sleep(000);
-		System.out.println("bfor ok");
-		adriver1.findElement(By.xpath("//android.widget.Button[contains(@text,'OK')]")).click();
-		Thread.sleep(1000);
-		(new TouchAction(adriver1)).tap(870, 1143).perform();//login
-		//adriver1.findElement(By.xpath("//android.widget.ImageView[@index='0']")).click();//Login button click
-		adriver1.findElement(By.xpath("//android.widget.Button[@text='LOG IN']")).click();//Login button click		  
-		Thread.sleep(1000);
-		MobileElement el1 = (MobileElement) adriver1.findElementById("com.brisk.jpay.qa:id/txt_username");
-		el1.sendKeys("qatest12@qa.com");
-		Thread.sleep(1000);
-		MobileElement el2 = (MobileElement) adriver1.findElementById("com.brisk.jpay.qa:id/txt_password");
-		el2.sendKeys("Test@123");
-		MobileElement el3 = (MobileElement) adriver1.findElementById("com.brisk.jpay.qa:id/btn_login");
-		el3.click();
-		System.out.println("Login button clicked");
-		Thread.sleep(8000);
-		System.out.println("5sec");
-		 MobileElement el4 = (MobileElement) adriver1.findElementById("com.android.packageinstaller:id/permission_allow_button");
-		  el4.click();
-		adriver1.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();  Thread.sleep(1000);
-		System.out.println("Allow1");
-		adriver1.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();  Thread.sleep(1000);
-		adriver1.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();  Thread.sleep(1000);
-		adriver1.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();  Thread.sleep(2000);
-
-		System.out.println("Allow4");
-		MobileElement el10 = (MobileElement) adriver1.findElementByXPath("//android.widget.TextView[@text='Email']");
-		el10.click(); System.out.println("email button"); Thread.sleep(9000);
-
-		MobileElement el11 = (MobileElement) adriver1.findElementById("com.brisk.jpay.qa:id/menu_email");// email top link list
-		el11.click();  System.out.println("email link list"); Thread.sleep(3000);
-
-		MobileElement el15 = (MobileElement) adriver1.findElementByXPath("//android.widget.TextView[@index='1']");
-		el15.click();
-
-		 MobileElement el13 = (MobileElement) adriver1.findElementsByXPath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[2]");
-		  el13.click();  System.out.println("sent link ");
-		  Thread.sleep(3000);
-		  // MobileElement el12 = (MobileElement) adriver1.findElementByXPath("//android.widget.TextView[contains(@text,'How are you? We will meet soon')]");
-		  //el12.click();
-		  // MobileElement el16 = (MobileElement) adriver1.findElementByXPath("//android.widget.TextView[(@index,'0']");
-		  MobileElement el16 = (MobileElement) adriver1.findElementByXPath("//android.widget.TextView[@index='0']");
-		  el16.click();
-		  Manipulation.verifyElementIsPresent(adriver1, el16);
-		  System.out.println("1st msg ");
-		  Thread.sleep(3000);
-		  adriver1.closeApp();
-
-		  //desktop
-		  Runtime rs = Runtime.getRuntime();
-			Process app1 = null;
-			app1=rs.exec("C:\\Program Files (x86)\\JPay\\InmateKiosk\\JMailInmate.exe");
-			Thread.sleep(30000);
-			
-			try {
-				FipsarReports.add("Launch InmateKiosk application", "Launched Notepad Application successfully", null, LogAs.PASSED , null);
-				Screen s=new Screen();   
-				
-				s.type(Directory.uploadFilePath+"JPAY_UserID.PNG","a312348");
-				Thread.sleep(1000);
-				s.type(Directory.uploadFilePath+"JPAY_Password.PNG", "123456");
-				s.click(Directory.uploadFilePath+"JPAY_Login.PNG");
-				FipsarReports.add("Click on Login button", "Clicked on Login Button successfully", null, LogAs.PASSED , null);
-				Thread.sleep(30000);
-				
-				s.click(Directory.uploadFilePath+"JPAY_Mail.PNG"); Thread.sleep(15000); System.out.println("click on jpay mail and 5sec");
-				s.doubleClick(Directory.uploadFilePath+"JPAY_Mail_List.PNG"); Thread.sleep(10000);System.out.println("2click on jpay mail-list and 5sec");
-				s.click(Directory.uploadFilePath+"JPAY_Logoff.PNG"); Thread.sleep(5000);			System.out.println("click on logoff 5sec");
-				
-			}
-			catch(Exception e) {
-
-			}
-			finally {
-				app1.destroy();
-			}	
-	}
-
 }
 

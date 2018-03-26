@@ -25,6 +25,7 @@ import com.fipsar.qa.config.ChromeBrowser;
 import com.fipsar.qa.config.FirefoxBrowser;
 import com.fipsar.qa.config.IEBrowser;
 import com.fipsar.qa.config.IOSSetup;
+import com.fipsar.qa.config.OperaBrowser;
 import com.fipsar.qa.config.SafariBrowser;
 import com.fipsar.qa.datadriver.CaseStep;
 import com.fipsar.qa.datadriver.TestCaseRunner;
@@ -91,6 +92,8 @@ public class TestNGClass {
 				driver = new IEBrowser().getDriver();
 			} else if (params.getBrowserName().equals("safari")) {
 				driver = new SafariBrowser().getDriver();
+			} else if (params.getBrowserName().equals("opera")) {
+				driver = new OperaBrowser().getDriver();
 			}else if(params.getBrowserName().equals("android")) {
 				adriver = AndroidSetup.getDriver();
 			} else if(params.getBrowserName().equalsIgnoreCase("IOS")) {

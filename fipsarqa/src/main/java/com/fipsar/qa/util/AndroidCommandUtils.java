@@ -292,7 +292,7 @@ public class AndroidCommandUtils {
 			Navigate.goForward(driver);
 			break;
 		case "AlertOk":
-			returnObj = Navigate.alertOk(driver, element);
+			returnObj = Navigate.alertOk(driver);
 			break;	    
 		case "DismissAlert":
 			Navigate.dismissAlert(driver);
