@@ -23,6 +23,13 @@ public class provider_reusables implements	OR {
 		Manipulation.sendKeys(provider_username,Directory.provider_username);
 		Manipulation.sendKeys(provider_password, Directory.provider_password);
 		Manipulation.click(login_button);
+		Manipulation.wait(driver, "3");
+        
+		if(driver.findElement( By.id( "Old" ) ).isDisplayed())
+		{
+			WebElement webElement=driver.findElement(By.id("Old"));
+			Manipulation.click(webElement);
+		}		
 		Manipulation.wait(driver, "5");
 
 	}

@@ -230,6 +230,16 @@ public class CommandUtils {
 						.dynamicSendkeys(driver, inputData, element);
 				getTextMap.put(stepNo, returnObj.toString());
 				break;
+			case "TypeDynamicAlpha":
+				if (inputData == null && referenceStep != null
+				&& !referenceStep.trim().equals("")) {
+					int refStep = new Integer(referenceStep);
+					inputData = getTextMap.get(Integer.valueOf(refStep));
+				}
+				returnObj = Manipulation
+						.dynamicAlphabetic(driver, inputData, element);
+				getTextMap.put(stepNo, returnObj.toString());
+				break;
 			case "Submit":
 				Manipulation.submit(element);
 				break;

@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Random;
 
 import org.apache.commons.io.comparator.DirectoryFileComparator;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -699,7 +700,6 @@ public class Manipulation extends CommandUtils implements OR {
 	}
 
 	/**
-
 	 * Description :
 	 * Ticket ID :
 	 * Required Inputs :
@@ -716,7 +716,28 @@ public class Manipulation extends CommandUtils implements OR {
 		return combinedValues;
 	}
 
-	
+	/**
+	 * Description :
+	 * Ticket ID :
+	 * Required Inputs :
+	 * Purpose :
+	 */
+	public static String dynamicAlphabetic(WebDriver driver,String inputData, WebElement webElement){
+		webElement.clear();
+		try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
+	//	String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
+		String originalValue = inputData;
+		
+		 String generatedString = RandomStringUtils.randomAlphabetic(10);
+		 
+		    System.out.println(generatedString);
+		    String combinedValues = generatedString+originalValue;
+		sendKeys(webElement, combinedValues);
+		
+		//		System.out.println(combinedValues);
+		return combinedValues;
+	}
+
 
 	
 	public static void waitForAjax(WebDriver driver) {
@@ -1035,9 +1056,7 @@ public class Manipulation extends CommandUtils implements OR {
 	public static void typeupload(WebElement element, String inputData) {
 		String inputdata=Directory.uploadFilePath+inputData+".PNG";
 		element.sendKeys(inputdata);
-		System.out.println("inputdata="+inputdata);
-		
-		
+				
 	}
 }
 
