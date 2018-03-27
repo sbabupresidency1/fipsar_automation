@@ -33,9 +33,12 @@ public class patient_reusables implements	OR {
 		{
 			WebElement webElement=driver.findElement(By.id("Old"));
 			Manipulation.click(webElement);
+			Manipulation.wait(driver, "5");
 		}		
-		Manipulation.wait(driver, "5");
-
+		else
+		{
+	Manipulation.wait(driver, "3");
+		}
 	}
 	/*
 	 * Input data as Patient/ Provider / Pharmacy
