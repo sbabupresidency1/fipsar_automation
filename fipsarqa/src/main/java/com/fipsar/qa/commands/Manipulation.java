@@ -711,9 +711,11 @@ public class Manipulation extends CommandUtils implements OR {
 		String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
 		String originalValue = inputData;
 		String combinedValues = currenttime+originalValue;
-		sendKeys(webElement, combinedValues);
+		 String generatedString = RandomStringUtils.randomAlphabetic(8);
+		 String combinedValues1 = generatedString+originalValue+combinedValues;
+		sendKeys(webElement, combinedValues1);
 		//		System.out.println(combinedValues);
-		return combinedValues;
+		return combinedValues1;
 	}
 
 	/**
@@ -729,9 +731,7 @@ public class Manipulation extends CommandUtils implements OR {
 		String originalValue = inputData;
 		
 		 String generatedString = RandomStringUtils.randomAlphabetic(10);
-		 
-		    System.out.println(generatedString);
-		    String combinedValues = generatedString+originalValue;
+		 String combinedValues = generatedString+originalValue;
 		sendKeys(webElement, combinedValues);
 		
 		//		System.out.println(combinedValues);
