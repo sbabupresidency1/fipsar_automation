@@ -1060,9 +1060,8 @@ public class Manipulation extends CommandUtils implements OR {
 	}
 
 	public static void sikuliClick(String inputData) throws FindFailed, InterruptedException {
-		Screen s=new Screen();
-		Pattern s1 = new Pattern(Directory.uploadFilePath+inputData+".PNG");
-		s.click(s1);
+		Screen s=new Screen();		
+		s.click(Directory.uploadFilePath+inputData+".PNG");
 		Thread.sleep(4000);
 		
 	}
