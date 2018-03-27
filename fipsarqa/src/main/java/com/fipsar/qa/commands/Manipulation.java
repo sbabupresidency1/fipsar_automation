@@ -711,10 +711,10 @@ public class Manipulation extends CommandUtils implements OR {
 		String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
 		String originalValue = inputData;
 		String combinedValues = currenttime+originalValue;
-		 String generatedString = RandomStringUtils.randomAlphabetic(8);
+		 String generatedString = RandomStringUtils.randomAlphabetic(4);
 		 String combinedValues1 = generatedString+originalValue+combinedValues;
+		 System.out.println(combinedValues1);
 		sendKeys(webElement, combinedValues1);
-		//		System.out.println(combinedValues);
 		return combinedValues1;
 	}
 
@@ -1023,7 +1023,7 @@ public class Manipulation extends CommandUtils implements OR {
 
 		StringSelection ss = new StringSelection(inputData);
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-		Robot robot = new Robot();
+		Robot robot = new Robot();		
 		robot.keyPress(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_V);
 		robot.keyRelease(KeyEvent.VK_V);
@@ -1063,8 +1063,9 @@ public class Manipulation extends CommandUtils implements OR {
 		Screen s=new Screen();	
 		String inputdata=Directory.uploadFilePath+inputData+".PNG";
 		System.out.println("inputdata="+inputdata);
-		s.click(inputdata);
-		Thread.sleep(4000);
+		s.mouseMove(inputdata);
+		s.doubleClick(inputdata);
+		Thread.sleep(2000);
 		
 	}
 }
