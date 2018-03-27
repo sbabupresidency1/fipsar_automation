@@ -3,3 +3,5 @@ QA/OutputFile/
 fipsarqa/target/
 QA/Reports/
 fipsarqa/test-output/
+fipsarqa/.classpath
+fipsarqa/.settings/org.eclipse.core.resources.prefs
