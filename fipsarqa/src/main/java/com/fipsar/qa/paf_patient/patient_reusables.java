@@ -29,16 +29,16 @@ public class patient_reusables implements	OR {
 		Manipulation.click(login_button);
 		Manipulation.wait(driver, "3");
         
-		if(driver.findElement( By.id( "Old" ) ).isDisplayed())
-		{
-			WebElement webElement=driver.findElement(By.id("Old"));
-			Manipulation.click(webElement);
-			Manipulation.wait(driver, "5");
-		}		
-		else
-		{
-	Manipulation.wait(driver, "3");
-		}
+		try {
+			if(driver.findElement( By.id( "Old" ) ).isDisplayed())
+			{
+				WebElement webElement=driver.findElement(By.id("Old"));
+				Manipulation.click(webElement);
+				Manipulation.wait(driver, "5");
+			}	}	
+			catch(Exception e) {
+				Manipulation.wait(driver, "3");
+			}	
 	}
 	/*
 	 * Input data as Patient/ Provider / Pharmacy
