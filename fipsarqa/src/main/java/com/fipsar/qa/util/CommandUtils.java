@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -795,6 +796,9 @@ public class CommandUtils {
 			case "SSN9Digit":
 				returnObj=pharmacy_reusables.ssnNineDigit(driver,element);
 				getTextMap.put(stepNo, returnObj.toString());
+				break;	
+			case "SikuliClick":
+				Manipulation.sikuliClick(inputData);				
 				break;	
 			}
 		}
