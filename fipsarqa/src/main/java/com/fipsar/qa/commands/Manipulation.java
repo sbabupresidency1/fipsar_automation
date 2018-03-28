@@ -1063,8 +1063,21 @@ public class Manipulation extends CommandUtils implements OR {
 		System.out.println("inputdata="+inputdata);
 		s.mouseMove(inputdata);
 		s.doubleClick(inputdata);
-		Thread.sleep(2000);
-		
+		Thread.sleep(2000);		
+	}
+	public static String tenDigit(WebDriver driver, WebElement element){
+		// initialize a Random object somewhere; you should only need one
+		Random random = new Random();
+
+		// generate a random integer from 0 to 899, then add 100
+		int x = random.nextInt(900) + 100;            String ssn_1 = Integer.toString(x); System.out.println(x);
+		int y = random.nextInt(10) + 90; String ssn_2 = Integer.toString(y);System.out.println(y);
+		int z = random.nextInt(90000) + 10000;        String ssn_3 = Integer.toString(z);System.out.println(z);
+		String TEN=ssn_1+ssn_2+ssn_3;		 System.out.println(TEN);
+		Manipulation.sendKeys(element, TEN);	                
+		Manipulation.wait(driver, "1");
+		return TEN;
+
 	}
 }
 

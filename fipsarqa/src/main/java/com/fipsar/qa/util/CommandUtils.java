@@ -20,6 +20,7 @@ import com.fipsar.qa.commands.ElementActions;
 import com.fipsar.qa.commands.LocatorBy;
 import com.fipsar.qa.commands.Manipulation;
 import com.fipsar.qa.commands.Navigate;
+import com.fipsar.qa.lls.lls_patient.lls_patient_reusables;
 import com.fipsar.qa.utils.Directory;
 
 import com.fipsar.qa.paf_patient.patient_reusables;
@@ -800,6 +801,16 @@ public class CommandUtils {
 			case "SikuliClick":
 				Manipulation.sikuliClick(inputData);				
 				break;	
+			case "LLSPatientLogin":
+				lls_patient_reusables.patientLogin(driver);
+				break;
+			case "LLSPortalSelection": // Patient, Provider or Pharmacy
+				lls_patient_reusables.regSelection(driver, inputData);
+				break;
+			case "TenDigitPhone": 				
+				returnObj=Manipulation.tenDigit(driver,element);
+				getTextMap.put(stepNo, returnObj.toString());
+				break;
 			}
 		}
 		return returnObj;

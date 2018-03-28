@@ -36,7 +36,6 @@ public class pharmacy_reusables implements OR {
 			}	
 	}
 	/**
-
 	 * Description :
 	 * Ticket ID :
 	 * Required Inputs :
@@ -56,7 +55,6 @@ public class pharmacy_reusables implements OR {
 		Manipulation.sendKeys(element, SSN);	                
 		Manipulation.wait(driver, "1");
 		return SSN;
-
 	}
 
 }

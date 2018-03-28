@@ -87,14 +87,14 @@ public class Directory {
 	public static String pharmacy_password=null;
 	public static String Programadminusername=null;
 	public static String Programadminpassword=null;
-	public static String Coachesusername1=null;
-	public static String Coachespassword1=null;
-	public static String Coachesusername2=null;
-	public static String Coachespassword2=null;
-	public static String Coachesusername3=null;
-	public static String Coachespassword3=null;
-	public static String OpsAdminusername=null;
-	public static String OpsAdminpassword=null;
+	public static String lls_patient_userName=null;
+	public static String lls_patient_password=null;
+	public static String lls_provider_username=null;
+	public static String lls_provider_password=null;
+	public static String lls_pharmacy_username=null;
+	public static String lls_pharmacy_password=null;
+	public static String lls_reg_url=null;
+	public static String lls_login_url=null;
 	public static String patient_username=null;
 	public static String provider_username=null;
 	public static String pharmacy_username=null;
@@ -197,7 +197,7 @@ public class Directory {
 				MOBILE_IOSDEVICE_UDID = localProperties.getProperty(   "fipsar.ios.mobile.udid").trim();
 				GRID_IP = localProperties.getProperty(			"fipsar.Grid").trim().toLowerCase();
 
-				//URLs and Credentials for PAF 
+				//URLs and Credentials for PAF  - CPR
 				Properties urlsProperties = new Properties();
 				System.out.println("testCasePath: "+testCasePath);
 				InputStream input = new FileInputStream(testCasePath+"/"+"urls.properties");
@@ -210,6 +210,17 @@ public class Directory {
 				provider_password=urlsProperties.getProperty("provider_password").trim();
 				pharmacy_username=urlsProperties.getProperty("pharmacy_userName").trim();
 				pharmacy_password=urlsProperties.getProperty("pharmacy_password").trim();
+				//LLS
+				lls_reg_url=urlsProperties.getProperty("lls_reg_url").trim();
+				lls_login_url=urlsProperties.getProperty("lls_login_url").trim();
+				lls_patient_userName=urlsProperties.getProperty("lls_patient_userName").trim();
+				lls_patient_password=urlsProperties.getProperty("lls_patient_password").trim();
+				lls_provider_username=urlsProperties.getProperty("lls_provider_userName").trim();
+				lls_provider_password=urlsProperties.getProperty("lls_provider_password").trim();
+				lls_pharmacy_username=urlsProperties.getProperty("lls_pharmacy_userName").trim();
+				lls_pharmacy_password=urlsProperties.getProperty("lls_pharmacy_password").trim();
+				
+				
 				try {
 					if ((headerText != null) && (headerText.length() > 0)) {
 						ReportLabels.HEADER_TEXT.setLabel(headerText);
