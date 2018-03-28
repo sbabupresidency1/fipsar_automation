@@ -712,7 +712,6 @@ public class Manipulation extends CommandUtils implements OR {
 		
 		 String generatedString = RandomStringUtils.randomAlphabetic(4);
 		 String combinedValues1 = generatedString+currenttime+inputData;
-		 System.out.println(combinedValues1);
 		sendKeys(webElement, combinedValues1);
 		return combinedValues1;
 	}
