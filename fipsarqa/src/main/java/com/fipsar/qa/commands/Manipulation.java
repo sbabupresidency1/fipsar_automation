@@ -31,6 +31,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.html5.AddApplicationCache;
+import org.openqa.selenium.remote.server.handler.FindElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -252,11 +253,11 @@ public class Manipulation extends CommandUtils implements OR {
 
 	}
 
-	public static String clearAndType(WebElement webElement, String keysToSend) {
+	public static String clearAndType(WebElement webElement, String input) {
 		webElement.clear();
-		try{Thread.sleep(2000);}catch(InterruptedException e){e.printStackTrace();}
-		webElement.sendKeys(keysToSend);
-		return keysToSend;
+		try{Thread.sleep(1000);}catch(InterruptedException e){e.printStackTrace();}
+		webElement.sendKeys(input);
+		return input;
 	}
 
 	public static String sendKeys(WebElement webElement,String keysToSend) {
@@ -1000,17 +1001,8 @@ public class Manipulation extends CommandUtils implements OR {
 		wait(driver, "3");
 		System.out.println("Entered tabs");
 		wait(driver, "3");
-
-		/*try{
-			com.zillion.qa.commands.Manipulation.browserURLSecurityException(driver);
-		}
-		catch (Exception e)
-		{
-
-		}	*/
 	}
 	/**
-
 	 * Description : Image or File Upload using Robot
 	 * Ticket ID :
 	 * Required Inputs :
@@ -1052,9 +1044,8 @@ public class Manipulation extends CommandUtils implements OR {
 	}
 
 	public static void typeupload(WebElement element, String inputData) {
-		String inputdata=Directory.uploadFilePath+inputData+".PNG";
-		element.sendKeys(inputdata);
-				
+		String inputdata=Directory.uploadFilePath+inputData+".PNG";		
+		element.sendKeys(inputdata);				
 	}
 
 	public static void sikuliClick(String inputData) throws FindFailed, InterruptedException {
@@ -1074,10 +1065,20 @@ public class Manipulation extends CommandUtils implements OR {
 		int y = random.nextInt(10) + 90; String ssn_2 = Integer.toString(y);System.out.println(y);
 		int z = random.nextInt(90000) + 10000;        String ssn_3 = Integer.toString(z);System.out.println(z);
 		String TEN=ssn_1+ssn_2+ssn_3;		 System.out.println(TEN);
+		element.clear();
 		Manipulation.sendKeys(element, TEN);	                
 		Manipulation.wait(driver, "1");
 		return TEN;
-
 	}
+	public static void dobMarch(WebDriver driver, WebElement element){
+		
+		element.click();
+		WebElement el1=driver.findElement(By.xpath("//div[@data-label='dob']//th[2]"));
+		Manipulation.click(el1);
+		WebElement el2=driver.findElement(By.xpath("//div[@data-label='dob']//div[@class='rdtMonths']//td[text()='Mar']"));
+		Manipulation.click(el2);
+		WebElement el3=driver.findElement(By.xpath("//div[@class='rdtPicker']//td[text()='1']"));
+		Manipulation.click(el3);
+		}
 }
 

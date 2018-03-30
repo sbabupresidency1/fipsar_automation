@@ -68,7 +68,7 @@ public class patient_reusables implements	OR {
  * Required Inputs :
  * Purpose :
  */
-public static void ssnInput(WebDriver driver){
+public static String ssnInput(WebDriver driver){
 	// initialize a Random object somewhere; you should only need one
 	Random random = new Random();
 
@@ -85,6 +85,7 @@ public static void ssnInput(WebDriver driver){
 	Manipulation.sendKeys(ssn2, "24");
 	Manipulation.sendKeys(ssn3, ssn_3);
 	Manipulation.wait(driver, "2");
+	return ssn_3;
 	
 }
 

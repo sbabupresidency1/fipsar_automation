@@ -780,7 +780,8 @@ public class CommandUtils {
 				patient_reusables.regSelection(driver, inputData);
 				break;
 			case "PatientSSN": 
-				patient_reusables.ssnInput(driver);
+				returnObj=patient_reusables.ssnInput(driver);
+				getTextMap.put(stepNo, returnObj.toString());
 				break;
 			case "ProviderLogin":
 				provider_reusables.providerLogin(driver);
@@ -810,6 +811,9 @@ public class CommandUtils {
 			case "TenDigitPhone": 				
 				returnObj=Manipulation.tenDigit(driver,element);
 				getTextMap.put(stepNo, returnObj.toString());
+				break;
+			case "DOBMarch": 				
+				Manipulation.dobMarch(driver,element);				
 				break;
 			}
 		}
