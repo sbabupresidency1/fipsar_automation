@@ -1086,7 +1086,7 @@ public class Manipulation extends CommandUtils implements OR {
 	}
 	
 	public static void inCompleteDelete(WebDriver driver, WebElement element) throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 		while(true) {
 			try {
 				
@@ -1094,8 +1094,7 @@ public class Manipulation extends CommandUtils implements OR {
 				if(driver.findElement( By.xpath( "//td[text()='No Incomplete Applications Found']" ) ).isDisplayed())
 				{
 				System.out.println("No Incomplete applications found");
-					
-				}else {driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+				}else {				
 				WebElement webElement=driver.findElement(By.xpath( "//span[contains(@id,'trash')]"));
 				Manipulation.click(webElement);
 				Manipulation.wait(driver, "5");	}
