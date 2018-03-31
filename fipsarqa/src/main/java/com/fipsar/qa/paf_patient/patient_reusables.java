@@ -84,7 +84,7 @@ public static String ssnInput(WebDriver driver){
 	Manipulation.sendKeys(ssn1, "101");
 	Manipulation.sendKeys(ssn2, "24");
 	Manipulation.sendKeys(ssn3, ssn_3);
-	Manipulation.wait(driver, "2");
+	Manipulation.wait(driver, "1");
 	return ssn_3;
 	
 }
