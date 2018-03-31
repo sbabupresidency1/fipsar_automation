@@ -815,6 +815,9 @@ public class CommandUtils {
 			case "DOBMarch": 				
 				Manipulation.dobMarch(driver,element);				
 				break;
+			case "TrashIncomplete": 				
+				Manipulation.inCompleteDelete(driver, element);				
+				break;
 			}
 		}
 		return returnObj;

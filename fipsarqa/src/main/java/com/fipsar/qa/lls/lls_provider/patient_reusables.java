@@ -1,6 +1,7 @@
 package com.fipsar.qa.lls.lls_provider;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,6 +33,7 @@ public class patient_reusables implements	OR {
 		try {
 			if(driver.findElement( By.id( "Old" ) ).isDisplayed())
 			{
+				driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 				WebElement webElement=driver.findElement(By.id("Old"));
 				Manipulation.click(webElement);
 				Manipulation.wait(driver, "5");

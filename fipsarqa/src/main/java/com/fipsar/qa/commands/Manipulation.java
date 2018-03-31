@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.apache.commons.io.comparator.DirectoryFileComparator;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -34,7 +36,9 @@ import org.openqa.selenium.remote.html5.AddApplicationCache;
 import org.openqa.selenium.remote.server.handler.FindElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.IScreen;
@@ -710,9 +714,9 @@ public class Manipulation extends CommandUtils implements OR {
 		webElement.clear();
 		try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
 		String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
-		
-		 String generatedString = RandomStringUtils.randomAlphabetic(4);
-		 String combinedValues1 = generatedString+currenttime+inputData;
+
+		String generatedString = RandomStringUtils.randomAlphabetic(4);
+		String combinedValues1 = generatedString+currenttime+inputData;
 		sendKeys(webElement, combinedValues1);
 		return combinedValues1;
 	}
@@ -726,19 +730,19 @@ public class Manipulation extends CommandUtils implements OR {
 	public static String dynamicAlphabetic(WebDriver driver,String inputData, WebElement webElement){
 		webElement.clear();
 		try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
-	//	String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
+		//	String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
 		String originalValue = inputData;
-		
-		 String generatedString = RandomStringUtils.randomAlphabetic(10);
-		 String combinedValues = generatedString+originalValue;
+
+		String generatedString = RandomStringUtils.randomAlphabetic(10);
+		String combinedValues = generatedString+originalValue;
 		sendKeys(webElement, combinedValues);
-		
+
 		//System.out.println(combinedValues);
 		return combinedValues;
 	}
 
 
-	
+
 	public static void waitForAjax(WebDriver driver) {
 		new WebDriverWait(driver, 180).until(new ExpectedCondition<Boolean>() {
 			@Override
@@ -1071,7 +1075,7 @@ public class Manipulation extends CommandUtils implements OR {
 		return TEN;
 	}
 	public static void dobMarch(WebDriver driver, WebElement element){
-		
+
 		element.click();
 		WebElement el1=driver.findElement(By.xpath("//div[@data-label='dob']//th[2]"));
 		Manipulation.click(el1);
@@ -1079,6 +1083,26 @@ public class Manipulation extends CommandUtils implements OR {
 		Manipulation.click(el2);
 		WebElement el3=driver.findElement(By.xpath("//div[@class='rdtPicker']//td[text()='1']"));
 		Manipulation.click(el3);
-		}
+	}
+	
+	public static void inCompleteDelete(WebDriver driver, WebElement element) throws InterruptedException {
+		Thread.sleep(5000);
+		while(true) {
+			try {
+				
+				//WebElement trash=driver.findElement( By.xpath( "//span[contains(@id,'trash')]" ) );
+				if(driver.findElement( By.xpath( "//td[text()='No Incomplete Applications Found']" ) ).isDisplayed())
+				{
+				System.out.println("No Incomplete applications found");
+					
+				}else {driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+				WebElement webElement=driver.findElement(By.xpath( "//span[contains(@id,'trash')]"));
+				Manipulation.click(webElement);
+				Manipulation.wait(driver, "5");	}
+				}
+			catch (Exception e){}
+			break;	
+		}			
+}
 }
 
