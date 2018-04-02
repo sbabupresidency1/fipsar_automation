@@ -816,8 +816,15 @@ public class CommandUtils {
 				Manipulation.dobMarch(driver,element);				
 				break;
 			case "TrashIncomplete": 				
-				Manipulation.inCompleteDelete(driver, element);				
+				pharmacy_reusables.inCompleteDelete(driver, element);				
 				break;
+			case "ViewComplete":
+				if (inputData == null && referenceStep != null) {
+					int refSte = new Integer(referenceStep);
+					String refSte2 = getTextMap.get(Integer.valueOf(refSte));
+				pharmacy_reusables.viewComplete(driver, refSte2);	
+				}
+				break;	
 			}
 		}
 		return returnObj;

@@ -1084,24 +1084,6 @@ public class Manipulation extends CommandUtils implements OR {
 		WebElement el3=driver.findElement(By.xpath("//div[@class='rdtPicker']//td[text()='1']"));
 		Manipulation.click(el3);
 	}
-	
-	public static void inCompleteDelete(WebDriver driver, WebElement element) throws InterruptedException {
-		Thread.sleep(4000);
-		while(true) {
-			try {
-				
-				//WebElement trash=driver.findElement( By.xpath( "//span[contains(@id,'trash')]" ) );
-				if(driver.findElement( By.xpath( "//td[text()='No Incomplete Applications Found']" ) ).isDisplayed())
-				{
-				System.out.println("No Incomplete applications found");
-				}else {				
-				WebElement webElement=driver.findElement(By.xpath( "//span[contains(@id,'trash')]"));
-				Manipulation.click(webElement);
-				Manipulation.wait(driver, "5");	}
-				}
-			catch (Exception e){}
-			break;	
-		}			
-}
+
 }
 

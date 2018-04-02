@@ -35,6 +35,23 @@ public class pharmacy_reusables implements OR {
 				Manipulation.wait(driver, "3");
 			}	
 	}
+	public static void inCompleteDelete(WebDriver driver, WebElement element) throws InterruptedException {
+		Thread.sleep(4000);
+		while(true) {
+			try {
+				
+				//WebElement trash=driver.findElement( By.xpath( "//span[contains(@id,'trash')]" ) );
+				if(driver.findElement( By.xpath( "//td[text()='No Incomplete Applications Found']" ) ).isDisplayed())
+				{
+				System.out.println("No Incomplete applications found");
+				}else {				
+				WebElement webElement=driver.findElement(By.xpath( "//span[contains(@id,'trash')]"));
+				Manipulation.click(webElement);
+				Manipulation.wait(driver, "5");	}
+				}
+			catch (Exception e){}
+		}	
+		}			
 	/**
 	 * Description :
 	 * Ticket ID :
@@ -56,6 +73,16 @@ public class pharmacy_reusables implements OR {
 		Manipulation.sendKeys(element, SSN);	                
 		Manipulation.wait(driver, "1");
 		return SSN;
+	}
+	
+	//need reference as inputdata 
+	public static String  viewComplete(WebDriver driver, String inputdata) {
+		
+		WebElement viewcomplete=driver.findElement(By.xpath("//td[text()='"+inputdata+"']//following-sibling::td//span//a[text()='Complete Application']"));
+		viewcomplete.click();
+		//a[text()='Complete Application']
+
+		return null;
 	}
 
 }
