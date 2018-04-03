@@ -1,5 +1,8 @@
 package com.fipsar.qa.lls.lls_provider;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +13,10 @@ import org.openqa.selenium.WebElement;
 import com.fipsar.qa.commands.Navigate;
 import com.fipsar.qa.commands.Manipulation;
 import com.fipsar.qa.utils.Directory;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class patient_reusables implements	OR {
 
@@ -62,9 +69,34 @@ public class patient_reusables implements	OR {
 		Manipulation.wait(driver, "1");
 	}
 
+	
+	/**
+	 * Description :
+	 * Ticket ID :
+	 * Required Inputs :
+	 * Purpose :
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public static void MSSQLConnection(WebDriver driver) throws SQLException, ClassNotFoundException{
+		String port =Directory.Sql_Port ;
+		String database_name= Directory.Sql_Databasename;
+		String user = Directory.Sql_User;
+		String pass = Directory.Sql_Pass;
+		String hostname =Directory.Sql_Hostname;
+		String url = "jdbc:sqlserver://MYPC\\SQLEXPRESS;databaseName=MYDB;integratedSecurity=true";
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		java.sql.Connection conn = DriverManager.getConnection(url);
+		
+		/*String url ="jdbc:mysql:@"+hostname+":"+port+":"+database_name+"";
+		Class.forName("com.mysql.jdbc.Driver");*/
+		
+		System.out.println("connection success");
+		Statement statement = conn.createStatement();
+		ResultSet rs = statement.executeQuery("");
+	}
 
 /**
-
  * Description :
  * Ticket ID :
  * Required Inputs :
@@ -86,8 +118,7 @@ public static void ssnInput(WebDriver driver){
 	Manipulation.sendKeys(ssn1, "101");
 	Manipulation.sendKeys(ssn2, "24");
 	Manipulation.sendKeys(ssn3, ssn_3);
-	Manipulation.wait(driver, "2");
-	
+	Manipulation.wait(driver, "2");	
 }
 
 }
