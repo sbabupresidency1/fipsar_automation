@@ -40,6 +40,7 @@ public class lls_patient_reusables implements	OR {
 				Manipulation.wait(driver, "3");
 			}	
 	}
+	
 	/*
 	 * Input data as Patient/ Provider / Pharmacy
 	 */
@@ -59,7 +60,6 @@ public class lls_patient_reusables implements	OR {
 		Manipulation.selectByVisibletext(selectportal, inputData);		
 		Manipulation.wait(driver, "1");
 	}
-
 
 /**
 
