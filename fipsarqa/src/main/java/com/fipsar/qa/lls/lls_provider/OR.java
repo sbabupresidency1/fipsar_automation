@@ -2,8 +2,8 @@ package com.fipsar.qa.lls.lls_provider;
 
 public interface OR {
 
-	public final String PROVIDER_USERNAME="//input[@type='email']";
-	public final String PROVIDER_PASSWORD="//input[@type='password']";
+	public final String PROVIDER_USERNAME="//input[@id='username']";
+	public final String PROVIDER_PASSWORD="//input[@id='password']";
 	public final String PROVIDER_SUBMIT="//button[text()='Submit']";
 	public final String PROVIDER_LOGIN_USERNAME_REQUIRED="//span[contains(text(),'User Name')]";
 	public final String PROVIDER_LOGIN_PASSWORD_REQUIRED="//span[contains(text(),'Password')]";
