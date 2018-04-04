@@ -47,10 +47,10 @@ public class Navigate {
 		try
 		{
 			driver.get(url);
-			if (Directory.browser.equalsIgnoreCase("chrome")) 
-			{
+			/*if (Directory.browser.equalsIgnoreCase("chrome")) 
+			{*/
 			driver.manage().window().maximize();				
-			}			
+			//}			
 		}
 
 		catch(Exception e)
