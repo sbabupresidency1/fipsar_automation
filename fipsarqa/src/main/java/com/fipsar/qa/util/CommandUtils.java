@@ -21,6 +21,7 @@ import com.fipsar.qa.commands.LocatorBy;
 import com.fipsar.qa.commands.Manipulation;
 import com.fipsar.qa.commands.Navigate;
 import com.fipsar.qa.lls.lls_patient.lls_patient_reusables;
+import com.fipsar.qa.lls.lls_pharmacy.lls_Pharmacy_reusables;
 import com.fipsar.qa.lls.lls_provider.llsProvider_reusables;
 import com.fipsar.qa.utils.Directory;
 
@@ -809,10 +810,12 @@ public class CommandUtils {
 			case "LLSProviderLogin":
 				llsProvider_reusables.providerLogin(driver);
 				break;
+			case "LLSPharmacyLogin":
+				lls_Pharmacy_reusables.pharmacyLogin(driver);
+				break;
 			case "LLSPortalSelection": // Patient, Provider or Pharmacy
 				lls_patient_reusables.regSelection(driver, inputData);
-				break;
-				
+				break;				
 			case "TenDigitPhone": 				
 				returnObj=Manipulation.tenDigit(driver,element);
 				getTextMap.put(stepNo, returnObj.toString());

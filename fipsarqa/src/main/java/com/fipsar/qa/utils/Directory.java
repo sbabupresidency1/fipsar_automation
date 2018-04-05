@@ -221,6 +221,7 @@ public class Directory {
 				lls_pharmacy_password=urlsProperties.getProperty("lls_pharmacy_password").trim();
 				
 				
+				
 				try {
 					if ((headerText != null) && (headerText.length() > 0)) {
 						ReportLabels.HEADER_TEXT.setLabel(headerText);
