@@ -83,5 +83,23 @@ public static void ssnInput(WebDriver driver){
 	Manipulation.wait(driver, "2");
 	
 }
+//need reference as inputdata 
+	public static String  viewComplete(WebDriver driver, String inputdata) {
+		
+		String Str = new String(inputdata);
+
+	      System.out.print("Return Value :"+Str );
+	      String s=Str.toUpperCase();
+	      System.out.println(Str.toUpperCase() );
+	      
+		
+		
+		System.out.println("Upper case="+s);
+		WebElement viewcomplete=driver.findElement(By.xpath("//td[text()='"+s+"']//following-sibling::td//span//a[text()='Complete Application']"));
+		viewcomplete.click();
+		//a[text()='Complete Application']
+
+		return null;
+	}
 
 }
