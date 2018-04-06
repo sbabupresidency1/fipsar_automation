@@ -1,4 +1,4 @@
-package com.fipsar.qa.lls.lls_patient;
+package com.fipsar.qa.faf.faf_patient;
 
 import java.util.Random;
 
@@ -10,11 +10,11 @@ import com.fipsar.qa.commands.Navigate;
 import com.fipsar.qa.commands.Manipulation;
 import com.fipsar.qa.utils.Directory;
 
-public class patient_reusables implements	OR {
+public class faf_patient_reusables implements	OR {
 
 	public  static void patientLogin(WebDriver driver)
 	{
-		Navigate.get(driver, Directory.copayqa_login_url);
+		Navigate.get(driver, Directory.faf_login_url);
 
 		WebElement patient_username= driver.findElement(By.xpath(OR.PATIENT_USERNAME));		
 		WebElement patient_password= driver.findElement(By.xpath(OR.PATIENT_PASSWORD));		
@@ -24,8 +24,8 @@ public class patient_reusables implements	OR {
 		WebElement patientPasswordRequired= driver.findElement(By.xpath(OR.PATIENT_LOGIN_PASSWORD_REQUIRED));
 		Manipulation.verifyElementIsPresent(driver, patientUsernameRequired);
 		Manipulation.verifyElementIsPresent(driver, patientPasswordRequired);
-		Manipulation.sendKeys(patient_username,Directory.patient_username);
-		Manipulation.sendKeys(patient_password, Directory.patient_password);
+		Manipulation.sendKeys(patient_username,Directory.faf_patient_userName);
+		Manipulation.sendKeys(patient_password, Directory.faf_patient_password);
 		Manipulation.click(login_button);
 		Manipulation.wait(driver, "3");
         
@@ -40,29 +40,25 @@ public class patient_reusables implements	OR {
 				Manipulation.wait(driver, "3");
 			}	
 	}
+	
 	/*
 	 * Input data as Patient/ Provider / Pharmacy
 	 */
-	public  static void regSelection(WebDriver driver, String inputData)
+	public  static void regSelection(WebDriver driver)
 	{
-		Navigate.get(driver, Directory.copayqa_reg_url);
-		//Navigate.get(driver, "https://copayqa.copays.org/portal-redesign#/?_k=900bxm");
-		WebElement selectportal= driver.findElement(By.xpath(OR.PORTAL_SELECTION));			
-		Manipulation.selectByVisibletext(selectportal, inputData);		
+		Navigate.get(driver, Directory.faf_reg_url);		
 		Manipulation.wait(driver, "1");
 	}
 	public  static void loginSelection(WebDriver driver, String inputData)
 	{
-		Navigate.get(driver, Directory.copayqa_login_url);
+		Navigate.get(driver, Directory.lls_login_url);
 		//Navigate.get(driver, "https://copayqa.copays.org/portal-redesign#/?_k=900bxm");
 		WebElement selectportal= driver.findElement(By.xpath(OR.PORTAL_SELECTION));			
 		Manipulation.selectByVisibletext(selectportal, inputData);		
 		Manipulation.wait(driver, "1");
 	}
 
-
 /**
-
  * Description :
  * Ticket ID :
  * Required Inputs :

@@ -95,6 +95,10 @@ public class Directory {
 	public static String lls_pharmacy_password=null;
 	public static String lls_reg_url=null;
 	public static String lls_login_url=null;
+	public static String faf_reg_url=null;
+	public static String faf_login_url=null;
+	public static String faf_patient_userName=null;
+	public static String faf_patient_password=null;
 	public static String patient_username=null;
 	public static String provider_username=null;
 	public static String pharmacy_username=null;
@@ -219,6 +223,12 @@ public class Directory {
 				lls_provider_password=urlsProperties.getProperty("lls_provider_password").trim();
 				lls_pharmacy_username=urlsProperties.getProperty("lls_pharmacy_userName").trim();
 				lls_pharmacy_password=urlsProperties.getProperty("lls_pharmacy_password").trim();
+				//FAF
+				faf_reg_url=urlsProperties.getProperty("faf_reg_url").trim();
+				faf_login_url=urlsProperties.getProperty("faf_login_url").trim();
+				faf_patient_userName=urlsProperties.getProperty("faf_patient_userName").trim();
+				faf_patient_password=urlsProperties.getProperty("faf_patient_password").trim();
+				
 				
 				
 				

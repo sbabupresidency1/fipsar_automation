@@ -1,4 +1,4 @@
-package com.fipsar.qa.lls.lls_patient;
+package com.fipsar.qa.faf.faf_patient;
 
 public interface OR {
 
