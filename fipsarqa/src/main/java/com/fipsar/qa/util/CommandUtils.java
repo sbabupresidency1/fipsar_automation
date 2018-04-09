@@ -840,13 +840,6 @@ public class CommandUtils {
 				pharmacy_reusables.viewComplete(driver, refSte2);	
 				}
 				break;	
-			case "FAFViewComplete":
-				if (inputData == null && referenceStep != null) {
-					int refSte = new Integer(referenceStep);
-					String refSte2 = getTextMap.get(Integer.valueOf(refSte));
-					faf_patient_reusables.viewComplete(driver, refSte2);	
-				}
-				break;	
 			}
 		}
 		return returnObj;
