@@ -79,8 +79,8 @@ public class llsProvider_reusables implements	OR {
 		String pass = Directory.Sql_Pass;
 		String hostname =Directory.Sql_Hostname;
 		String url = "jdbc:sqlserver://192.168.8.202:1433;databaseName=PEGA_DEV_FAF";
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		//Class.forName("net.sourceforge.jtds.jdbc.Driver");
+		//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Class.forName("net.sourceforge.jtds.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(url,"paf1121@patientadvocate.org","Tamilan_1");
 		
 		/*String url ="jdbc:mysql:@"+hostname+":"+port+":"+database_name+"";
