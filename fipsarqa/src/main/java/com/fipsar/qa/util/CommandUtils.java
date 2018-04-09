@@ -833,6 +833,9 @@ public class CommandUtils {
 			case "TrashIncomplete": 				
 				pharmacy_reusables.inCompleteDelete(driver, element);				
 				break;
+			case "MSSQLConnection": 				
+				llsProvider_reusables.MSSQLConnection(driver);				
+				break;
 			case "ViewComplete":
 				if (inputData == null && referenceStep != null) {
 					int refSte = new Integer(referenceStep);

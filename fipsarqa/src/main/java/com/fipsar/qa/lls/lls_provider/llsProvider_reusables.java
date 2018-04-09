@@ -1,8 +1,11 @@
 package com.fipsar.qa.lls.lls_provider;
 
+//import com.microsoft.sqlserver.jdbc;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -14,10 +17,7 @@ import com.fipsar.qa.commands.Navigate;
 import com.fipsar.qa.lls.lls_provider.OR;
 import com.fipsar.qa.commands.Manipulation;
 import com.fipsar.qa.utils.Directory;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 public class llsProvider_reusables implements	OR {
 
@@ -78,16 +78,20 @@ public class llsProvider_reusables implements	OR {
 		String user = Directory.Sql_User;
 		String pass = Directory.Sql_Pass;
 		String hostname =Directory.Sql_Hostname;
-		String url = "jdbc:sqlserver://MYPC\\SQLEXPRESS;databaseName=MYDB;integratedSecurity=true";
+		String url = "jdbc:sqlserver://192.168.8.202:1433;databaseName=PEGA_DEV_FAF";
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		java.sql.Connection conn = DriverManager.getConnection(url);
+		//Class.forName("net.sourceforge.jtds.jdbc.Driver");
+		Connection conn = DriverManager.getConnection(url,"paf1121@patientadvocate.org","Tamilan_1");
 		
 		/*String url ="jdbc:mysql:@"+hostname+":"+port+":"+database_name+"";
 		Class.forName("com.mysql.jdbc.Driver");*/
 		
 		System.out.println("connection success");
 		Statement statement = conn.createStatement();
-		ResultSet rs = statement.executeQuery("");
+		ResultSet rs = statement.executeQuery("select HashValue from PEGA_DEV_FAF.PEGAWork.pr_PAF_FW_DATA_Hash where PortalUserID in (\r\n" + 
+				"select PortalID from PEGA_DEV_FAF.PEGAWork.pr_PAF_FW_DATA_PortalUser where EmailAddress like 'QwsLMon182611@mail.com' )");
+	System.out.println("ResultsSet ="+rs);
+	conn.close();
 	}
 
 /**
