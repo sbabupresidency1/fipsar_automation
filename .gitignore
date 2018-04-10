@@ -20,3 +20,4 @@ QA/testcases/LLS/Provider/~$L_Prov_Patient_App_Create__DCase_Positive.xlsx
 QA/testcases/LLS/Patient/~$L_PatientApp_Process_Positive_DCase_Yes.xlsx
 QA/testcases/Pharmacy/~$Phar_Patient_App_Save_Back_Front_Navi-ok.xlsx
 fipsarqa/target/fipsarqa-jar-with-dependencies.jar
+QA/testcases/LLS/Provider/~$L_Prov_Pcase_Mandatory_Fields.xlsx
