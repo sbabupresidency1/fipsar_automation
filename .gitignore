@@ -1,6 +1,10 @@
 fipsarqa/test-output/
 QA/OutputFile/
-fipsarqa/target/
+fipsarqa/target/archive-tmp/
+fipsarqa/target/classes/
+fipsarqa/target/generated-sources/
+fipsarqa/target/maven-archiver/
+fipsarqa/target/test-classes/
 QA/Reports/
 fipsarqa/test-output/
 fipsarqa/.classpath
@@ -15,3 +19,4 @@ QA/testcases/Pharmacy/~$Phar_Patient_App_ViewIncomplete -ok.xlsx
 QA/testcases/LLS/Provider/~$L_Prov_Patient_App_Create__DCase_Positive.xlsx
 QA/testcases/LLS/Patient/~$L_PatientApp_Process_Positive_DCase_Yes.xlsx
 QA/testcases/Pharmacy/~$Phar_Patient_App_Save_Back_Front_Navi-ok.xlsx
+fipsarqa/target/fipsarqa-jar-with-dependencies.jar
