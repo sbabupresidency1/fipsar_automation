@@ -73,15 +73,21 @@ public class llsProvider_reusables implements	OR {
 	 * @throws ClassNotFoundException 
 	 */
 	public static void MSSQLConnection(WebDriver driver) throws SQLException, ClassNotFoundException{
-		String port =Directory.Sql_Port ;
+		/*String port =Directory.Sql_Port ;
 		String database_name= Directory.Sql_Databasename;
 		String user = Directory.Sql_User;
 		String pass = Directory.Sql_Pass;
-		String hostname =Directory.Sql_Hostname;
-		String url = "jdbc:sqlserver://192.168.8.202:1433;databaseName=PEGA_DEV_FAF";
-		//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		Class.forName("net.sourceforge.jtds.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(url,"paf1121@patientadvocate.org","Tamilan_1");
+		String hostname =Directory.Sql_Hostname;*/
+		/*String url = "jdbc:sqlserver://192.168.8.202:1433;databaseName=PEGA_DEV_FAF";
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		//Class.forName("net.sourceforge.jtds.jdbc.Driver");
+		Connection conn = DriverManager.getConnection(url,"PATIENTADVOCATE\\paf1121","Tamilan_1");*/
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		Connection conn = DriverManager.getConnection("jdbc:sqlserver://192.168.8.202:1433;databaseName=PEGA_DEV_FAF;IntegratedSecurity = true;","PATIENTADVOCATE\\paf1121","Tamilan_1");
+        System.out.println("connection created");
+       /* Statement st=conn.createStatement();
+        String sql="select * from Login_System";*/
+        
 		
 		/*String url ="jdbc:mysql:@"+hostname+":"+port+":"+database_name+"";
 		Class.forName("com.mysql.jdbc.Driver");*/
