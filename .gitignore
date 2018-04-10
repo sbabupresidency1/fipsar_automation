@@ -22,3 +22,6 @@ QA/testcases/Pharmacy/~$Phar_Patient_App_Save_Back_Front_Navi-ok.xlsx
 fipsarqa/target/fipsarqa-jar-with-dependencies.jar
 QA/testcases/LLS/Provider/~$L_Prov_Pcase_Mandatory_Fields.xlsx
 QA/testcases/LLS/Patient/~$L_PatientApp_Process_ViewIncomplete.xlsx
+QA/testcases/CPR/Provider/~$Prov_Patient_App_Create__Denied-Ok.xlsx
+QA/testcases/CPR/Provider/~$Prov_Patient_App_Create__PCase_Positive-OK.xlsx
+QA/testcases/CPR/Pharmacy/~$Phar_Patient_App_Create__DCasePending-ok.xlsx
