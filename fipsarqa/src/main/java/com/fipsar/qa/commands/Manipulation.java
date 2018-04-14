@@ -715,7 +715,7 @@ public class Manipulation extends CommandUtils implements OR {
 		try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
 		String currenttime = new SimpleDateFormat("EHHmmss").format(Calendar.getInstance().getTime());
 
-		String generatedString = RandomStringUtils.randomAlphabetic(4);
+		String generatedString = RandomStringUtils.randomAlphabetic(8);
 		String combinedValues1 = generatedString+currenttime+inputData;
 		sendKeys(webElement, combinedValues1);
 		return combinedValues1;

@@ -68,7 +68,7 @@ public class pharmacy_reusables implements OR {
 		int y = random.nextInt(10) + 90; String ssn_2 = Integer.toString(y);System.out.println(y);
 		int z = random.nextInt(9000) + 1000;        String ssn_3 = Integer.toString(z);System.out.println(z);
 
-		String SSN="101-14-"+ssn_3;
+		String SSN="131-04-"+ssn_3;
 		System.out.println(SSN);
 		Manipulation.sendKeys(element, SSN);	                
 		Manipulation.wait(driver, "1");
