@@ -801,6 +801,10 @@ public class CommandUtils {
 			case "SSN9Digit":
 				returnObj=pharmacy_reusables.ssnNineDigit(driver,element);
 				getTextMap.put(stepNo, returnObj.toString());
+				break;
+			case "AlienNumber":
+				returnObj=pharmacy_reusables.alien(driver,element);
+				getTextMap.put(stepNo, returnObj.toString());
 				break;	
 			case "SikuliClick":
 				Manipulation.sikuliClick(inputData);				
