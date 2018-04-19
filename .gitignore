@@ -5,6 +5,7 @@ fipsarqa/target/classes/
 fipsarqa/target/generated-sources/
 fipsarqa/target/maven-archiver/
 fipsarqa/target/test-classes/
+fipsarqa/target/test-output/
 QA/Reports/
 fipsarqa/test-output/
 fipsarqa/.classpath
@@ -20,6 +21,7 @@ QA/testcases/LLS/Provider/~$L_Prov_Patient_App_Create__DCase_Positive.xlsx
 QA/testcases/LLS/Patient/~$L_PatientApp_Process_Positive_DCase_Yes.xlsx
 QA/testcases/Pharmacy/~$Phar_Patient_App_Save_Back_Front_Navi-ok.xlsx
 fipsarqa/target/fipsarqa-jar-with-dependencies.jar
+fipsarqa/target/fipsarqa.jar
 QA/testcases/LLS/Provider/~$L_Prov_Pcase_Mandatory_Fields.xlsx
 QA/testcases/LLS/Patient/~$L_PatientApp_Process_ViewIncomplete.xlsx
 QA/testcases/CPR/Provider/~$Prov_Patient_App_Create__Denied-Ok.xlsx
@@ -30,5 +32,5 @@ QA/Reports1
 QA/testcases/LLS/Provider/~$L_Prov_App_Mandatoryfield_Validation.xlsx
 QA/testcases/FAF/Patient/~$F_PatientApp_Process_Positive_DCase_ExistProvider.xlsx
 QA/testcases/CPR/Provider/~$Provider_Patient_Mandatory_Fields.xlsx
-fipsarqa/target/fipsarqa.jar
-fipsarqa/target/test-output/
+
+
