@@ -37,3 +37,4 @@ QA/testcases/CPR/Provider/~$Provider_Patient_Mandatory_Fields.xlsx
 fipsarqa/target/fipsarqa.jar
 QA/testcases/CPR/Pharmacy/~$Phar_Patient_App_Create_PCase_Positive_Alien.xlsx
 QA/testcases/CPR/Patient/~$PatientApp_Process_Pending_DCase.xlsx
+QA/testcases/FAF/Patient/~$F_PatientApp_Process_ViewIncomplete.xlsx
