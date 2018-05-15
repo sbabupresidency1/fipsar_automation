@@ -22,20 +22,8 @@ public class lls_Pharmacy_reusables implements	OR {
 		WebElement login_button= driver.findElement(By.xpath(OR.PROVIDER_SUBMIT));		
 		Manipulation.sendKeys(provider_username,Directory.lls_pharmacy_username);
 		Manipulation.sendKeys(provider_password, Directory.lls_pharmacy_password);
-		Manipulation.click(login_button);
-		
-		Manipulation.wait(driver, "3");
-        
-		try {
-		if(driver.findElement( By.id( "Old" ) ).isDisplayed())
-		{
-			WebElement webElement=driver.findElement(By.id("Old"));
-			Manipulation.click(webElement);
-			Manipulation.wait(driver, "5");
-		}	}	
-		catch(Exception e) {
-			Manipulation.wait(driver, "3");
-		}
+		Manipulation.click(login_button);		
+		Manipulation.wait(driver, "8");
 		}	
 	/*
 	 * Input data as Patient/ Provider / Pharmacy
