@@ -67,13 +67,13 @@ public class pharmacy_reusables implements OR {
 		WebElement element3=driver.findElement(By.id( "SSN3"));
 		
 		// generate a random integer from 0 to 899, then add 100
-		int x = random.nextInt(900) + 100;            String ssn_1 = Integer.toString(x); System.out.println(x);
+		int x = random.nextInt(900) + 100;            String ssn_1 = "131";
 		int y = random.nextInt(10) + 90; String ssn_2 = Integer.toString(y);System.out.println(y);
 		int z = random.nextInt(9000) + 1000;        String ssn_3 = Integer.toString(z);System.out.println(z);
 
-		String SSN="131"+ssn_2+ssn_3;
+		String SSN=ssn_1+ssn_2+ssn_3;
 		System.out.println(SSN);
-		Manipulation.sendKeys(element1, "131");
+		Manipulation.sendKeys(element1, ssn_1);
 		Manipulation.sendKeys(element2, ssn_2);	 
 		Manipulation.sendKeys(element3, ssn_3);	 
 		Manipulation.wait(driver, "1");
