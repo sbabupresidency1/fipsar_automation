@@ -20,11 +20,9 @@ import org.testng.annotations.Test;
 
 import com.fipsar.qa.FipsarReports;
 import com.fipsar.qa.commands.Navigate;
-import com.fipsar.qa.config.AndroidSetup;
 import com.fipsar.qa.config.ChromeBrowser;
 import com.fipsar.qa.config.FirefoxBrowser;
 import com.fipsar.qa.config.IEBrowser;
-import com.fipsar.qa.config.IOSSetup;
 import com.fipsar.qa.config.OperaBrowser;
 import com.fipsar.qa.config.SafariBrowser;
 import com.fipsar.qa.datadriver.CaseStep;
@@ -92,15 +90,7 @@ public class TestNGClass {
 				driver = new IEBrowser().getDriver();
 			} else if (params.getBrowserName().equals("safari")) {
 				driver = new SafariBrowser().getDriver();
-			} else if (params.getBrowserName().equals("opera")) {
-				driver = new OperaBrowser().getDriver();
-			}else if(params.getBrowserName().equals("android")) {
-				adriver = AndroidSetup.getDriver();
-			} else if(params.getBrowserName().equalsIgnoreCase("IOS")) {
-				idriver = IOSSetup.getDriver();
-			} else if(params.getBrowserName().equalsIgnoreCase("Desktop")) {
-				
-			}
+			} 
 			
 
 			final int iTest = TestNGClass.testCaseCount.getAndIncrement();
@@ -130,153 +120,54 @@ public class TestNGClass {
 				List<CaseStep> steps = utils.readTestCase(
 						params.getTestCaseFileName(),
 						params.getOrSheetFileName());
-				TestCaseRunner.exectuteTestCase(adriver,idriver,driver, steps);
+				TestCaseRunner.exectuteTestCase(driver, steps);
 				} catch (NoSuchElementException e) {
-					if(Directory.browser.equalsIgnoreCase("android")){
-						FipsarReports.add("Failed to find Element", LogAs.FAILED,
-								new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-
-
-						log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+adriver);		
-						//				driver.quit();
-						throw e; 
-					}
-					else if(Directory.browser.equalsIgnoreCase("IOS")){
-						FipsarReports.add("Failed to find Element", LogAs.FAILED,
-								new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-
-						log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+idriver);		
-						//				driver.quit();
-						throw e; 
-					}
-					else {
+					
 						FipsarReports.add("Failed to find Element", LogAs.FAILED,
 								new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
 
 						log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+driver);		
 
 						throw e;
-				}
+				
 				}
 			
 			catch (TimeoutException e) {
-				if(Directory.browser.equalsIgnoreCase("android")){
-					FipsarReports.add("Timeout Exception", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-
-
-					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+adriver);		
-					//				driver.quit();
-					throw e; 
-				}
-				else if(Directory.browser.equalsIgnoreCase("IOS")){
-					FipsarReports.add("Timeout Exception", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-
-					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+idriver);		
-					//				driver.quit();
-					throw e; 
-				}
-				else if(Directory.browser.equalsIgnoreCase("Desktop")){
-					FipsarReports.add("Timeout Exception", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.DESKTOP));
-
-					throw e; 
-				}
-				else {
+				
 					FipsarReports.add("Timeout Exception", LogAs.FAILED,
 							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
 
 					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+driver);		
 
 					throw e;
-			}
+			
 			}
 			catch (NullPointerException e){
-				if(Directory.browser.equalsIgnoreCase("android")){
-					FipsarReports.add("NullPointerException", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-					
-					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+adriver);
-
-					throw e;
-				}
-				else if(Directory.browser.equalsIgnoreCase("IOS")){
-					FipsarReports.add("NullPointerException", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+idriver);
-					throw e;
-				}
-				else if(Directory.browser.equalsIgnoreCase("Desktop")){
-					FipsarReports.add("NullPointerException", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.DESKTOP));
-
-					throw e; 
-				}
-				else {
+				
 					FipsarReports.add("NullPointerException", LogAs.FAILED,
 							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
 
 					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+driver);
 
-					throw e; }
+					throw e; 
 			}	
 			catch (Exception e){
-				if(Directory.browser.equalsIgnoreCase("android")){
-					FipsarReports.add("Exception", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-
-					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+adriver);
-					throw e;
-				}
-				else if(Directory.browser.equalsIgnoreCase("Desktop")){
-					FipsarReports.add("Exception", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.DESKTOP));
-
-					throw e; 
-				}
-				else if(Directory.browser.equalsIgnoreCase("IOS")){
-					FipsarReports.add("Exception", LogAs.FAILED,
-							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-
-					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+idriver);
-					throw e;
-				}
-				else {
+				
 					FipsarReports.add("Exception", LogAs.FAILED,
 							new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
 
 					log.info("Thread @ first close-----"+Thread.currentThread().getId() +"------------driver------------"+driver);
 					throw e;
-				}
+				
 			}	
 			finally
 			{
 
-				if(Directory.browser.equalsIgnoreCase("android")){
-					try
-					{
-						adriver.closeApp();
-						System.out.println("Android application closed successfully");
-					}
-					catch(Exception e)
-					{
-						
-					}
-					
-					log.info("Thread @ close-----"+Thread.currentThread().getId() +"------------driver------------"+adriver);}
-				else if(Directory.browser.equalsIgnoreCase("IOS")){
-					idriver.quit();
-					System.out.println("iOS application closed successfully");
-					log.info("Thread @ close-----"+Thread.currentThread().getId() +"------------driver------------"+idriver);}
-				else if(Directory.browser.equalsIgnoreCase("Desktop")) {
-					log.info("Desktop application closed successfully");
-				}
-				else {
+				
 					Navigate.quit(driver);
 					System.out.println("Browser closed successfully");
 					log.info("Thread @ close-----"+Thread.currentThread().getId() +"------------driver------------"+driver);
-				}
+				
 			}
 		} catch (InvalidFormatException e)
 		{

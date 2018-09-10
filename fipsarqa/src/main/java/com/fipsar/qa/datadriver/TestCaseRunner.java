@@ -12,19 +12,14 @@ import org.openqa.selenium.WebElement;
 
 import com.fipsar.qa.FipsarReports;
 import com.fipsar.qa.enums.LogAs;
-import com.fipsar.qa.util.AndroidCommandUtils;
 import com.fipsar.qa.util.CommandUtils;
-import com.fipsar.qa.util.IOSCommandUtils;
 import com.fipsar.qa.utils.Directory;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-
 public class TestCaseRunner {
-	public static void exectuteTestCase(AndroidDriver adriver,IOSDriver idriver,WebDriver driver, List<CaseStep> steps) throws Exception {
+	public static void exectuteTestCase(WebDriver driver, List<CaseStep> steps) throws Exception {
 
 		final Map<String,String> mapAppVersion = new HashMap<String,String>();
-		getAppVersions(new WebDriver[] {driver,adriver,idriver}, mapAppVersion);
+		getAppVersions(new WebDriver[] {driver}, mapAppVersion);
 		System.out.println(mapAppVersion);
 
 		Iterator<CaseStep> stepIterator = steps.iterator();
@@ -32,21 +27,12 @@ public class TestCaseRunner {
 		while (stepIterator.hasNext()) {
 			CaseStep eachStep = stepIterator.next();
 			CommandUtils util = new CommandUtils();
-			AndroidCommandUtils autil = new AndroidCommandUtils(); 
-			IOSCommandUtils iutil = new IOSCommandUtils();
+			
 			WebElement element = null;
 			if (eachStep.getOrLocator()!=null) {		
 				try
 				{
-					if(Directory.browser.equalsIgnoreCase("android")) {
-						element = autil.findElement(adriver, eachStep.getLocateBy(),
-								eachStep.getOrLocator(),eachStep.getOrLocatorStart(),eachStep.getOrLocatorEnd(),eachStep.getReferenceStep());
-					}
-					else if(Directory.browser.equalsIgnoreCase("IOS")) {
-						element = iutil.findElement(idriver, eachStep.getLocateBy(),
-								eachStep.getOrLocator(),eachStep.getOrLocatorStart(),eachStep.getOrLocatorEnd(),eachStep.getReferenceStep());
-					}
-					else {
+					{
 						element = util.findElement(driver, eachStep.getLocateBy(),
 								eachStep.getOrLocator(),eachStep.getOrLocatorStart(),eachStep.getOrLocatorEnd(),eachStep.getReferenceStep());
 					}
@@ -54,33 +40,13 @@ public class TestCaseRunner {
 				
 				catch(Exception exception) {}
 			}
-			if(Directory.browser.equalsIgnoreCase("android")) {
-				Object returnObj = autil.executeAction(adriver, element, eachStep.getAction(),
-						eachStep.getInputData(),eachStep.getStepNo(),eachStep.getReferenceStep());	    
-				//		FipsarReports.add(eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-				FipsarReports.add(eachStep.getAction(),eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, null);
-
-			}
-			else if(Directory.browser.equalsIgnoreCase("IOS")) {
-				Object returnObj = iutil.executeAction(idriver, element, eachStep.getAction(),
-						eachStep.getInputData(),eachStep.getStepNo(),eachStep.getReferenceStep());	    
-				//				FipsarReports.add(eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-				FipsarReports.add(eachStep.getAction(),eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, null);
-
-			}
-			else if(Directory.browser.equalsIgnoreCase("Desktop")) {
-				Object returnObj = util.executeAction(idriver, element, eachStep.getAction(),
-						eachStep.getInputData(),eachStep.getStepNo(),eachStep.getReferenceStep());	    
-				//				FipsarReports.add(eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
-				FipsarReports.add(eachStep.getAction(),eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, null);
-
-			}
-			else {
+			
+			
 				Object returnObj = util.executeAction(driver, element, eachStep.getAction(),
 						eachStep.getInputData(),eachStep.getStepNo(),eachStep.getReferenceStep());
 //								FipsarReports.add(eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, new CaptureScreen(ScreenshotOf.BROWSER_PAGE));
 				FipsarReports.add(eachStep.getAction(),eachStep.getDescription(),eachStep.getInputData(), eachStep.getExpectedResult(),Objects.toString(returnObj, ""),LogAs.PASSED, null);
-			}
+			
 		}
 	}
 

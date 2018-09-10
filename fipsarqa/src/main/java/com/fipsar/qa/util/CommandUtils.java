@@ -799,7 +799,7 @@ public class CommandUtils {
 				Manipulation.typeupload(element, inputData);
 				break;	
 			case "SSN9Digit":
-				returnObj=pharmacy_reusables.ssnNineDigit(driver,element);
+				returnObj=pharmacy_reusables.ssnNineDigit(driver);
 				getTextMap.put(stepNo, returnObj.toString());
 				break;
 			case "AlienNumber":

@@ -107,41 +107,7 @@ public class Directory {
 	public static String Memberpassword2=null;
 	public static String uploadFilePath=null;
 	public static String MailDropurl=null;
-	public static String Member_Tracker_Journal_181826_178095_mailid=null;
-	public static String Coaches_Member_Profile_186455_mailid=null;
-	public static String Lecturememberusername=null;
-	public static String Lecturememberpassword=null;
-	public static String Verification_186452_mailid=null;
-	public static String PAwellnesscorpusername=null;
-	public static String PAwellnesscorppassword=null;
-	public static String Guerrillamailurl=null;
-	public static String Sessionmemberusername=null;
-	public static String Sessionmemberpassword=null;
-	public static String AppendURL=null;
-	public static String Accountidofthemember=null;
-
-	public static String Oracle_Port=null;
-	public static String Oracle_Databasename=null;
-	public static String Oracle_User=null;
-	public static String Oracle_Pass =null;
-	public static String Oracle_Hostname=null;
-	public static String Sql_Hostname=null;
-	public static String Sql_Databasename=null;
-	public static String Sql_User=null;
-	public static String Sql_Pass=null;
-	public static String Sql_Port=null;	
-
-	public static String MOBILE_APPPATH=null;
-	public static String MOBILEAPP_APK_NAME=null;
-	public static String MOBILE_DEVICE_NAME=null;
-	public static String MOBILE_DEVICE_VERSION=null;
-	public static String MOBILE_APK_APPPACKAGE=null;
-	public static String MOBILE_DEVICE_TYPE=null;
-	public static String MOBILE_IOSDEVICE_UDID= null;
-	public static String MOBILE_APP_TYPE=null;
-	public static String MOBILE_WEB_BROWSER_NAME=null;
-	public static String MOBILE_WEB_URL=null;
-
+	
 
 	/**
 	 * Retrieve values from custom properties
@@ -187,18 +153,6 @@ public class Directory {
 				String logo1 = localProperties.getProperty("fipsar.proj.header.logo")			.trim();
 				logo=uploadFilePath+logo1;
 
-				//Mobile Configuration
-				String MOBILE_APP_PATH=localProperties.getProperty(   "fipsar.mobileapp.apk.path").trim();
-				MOBILE_APPPATH=uploadFilePath+MOBILE_APP_PATH;
-				MOBILEAPP_APK_NAME=localProperties.getProperty(   "fipsar.mobile.apk.name").trim();
-				MOBILE_DEVICE_NAME=localProperties.getProperty(   "fipsar.mobile.devicename").trim();
-				MOBILE_DEVICE_VERSION=localProperties.getProperty(   "fipsar.mobile.version").trim();
-				MOBILE_APK_APPPACKAGE=localProperties.getProperty(   "fipsar.mobile.apppackage.name").trim();
-				MOBILE_APP_TYPE = localProperties.getProperty(   "fipsar.mobile.app.type").trim();
-				MOBILE_WEB_BROWSER_NAME = localProperties.getProperty(   "fipsar.mobile.web.browser").trim();
-				MOBILE_WEB_URL = localProperties.getProperty(   "fipsar.mobile.web.Url").trim();
-				MOBILE_DEVICE_TYPE = localProperties.getProperty(   "fipsar.mobile.device.type").trim();
-				MOBILE_IOSDEVICE_UDID = localProperties.getProperty(   "fipsar.ios.mobile.udid").trim();
 				GRID_IP = localProperties.getProperty(			"fipsar.Grid").trim().toLowerCase();
 
 				//URLs and Credentials for PAF  - CPR
@@ -228,9 +182,6 @@ public class Directory {
 				faf_login_url=urlsProperties.getProperty("faf_login_url").trim();
 				faf_patient_userName=urlsProperties.getProperty("faf_patient_userName").trim();
 				faf_patient_password=urlsProperties.getProperty("faf_patient_password").trim();
-				
-				
-				
 				
 				try {
 					if ((headerText != null) && (headerText.length() > 0)) {

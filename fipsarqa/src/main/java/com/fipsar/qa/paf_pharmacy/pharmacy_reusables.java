@@ -59,10 +59,13 @@ public class pharmacy_reusables implements OR {
 	 * Purpose :
 	 * @return 
 	 */
-	public static String ssnNineDigit(WebDriver driver, WebElement element){
+	public static String ssnNineDigit(WebDriver driver){
 		// initialize a Random object somewhere; you should only need one
 		Random random = new Random();
-
+		WebElement element1=driver.findElement(By.id( "SSN1"));
+		WebElement element2=driver.findElement(By.id( "SSN2"));
+		WebElement element3=driver.findElement(By.id( "SSN3"));
+		
 		// generate a random integer from 0 to 899, then add 100
 		int x = random.nextInt(900) + 100;            String ssn_1 = Integer.toString(x); System.out.println(x);
 		int y = random.nextInt(10) + 90; String ssn_2 = Integer.toString(y);System.out.println(y);
@@ -70,7 +73,9 @@ public class pharmacy_reusables implements OR {
 
 		String SSN="131"+ssn_2+ssn_3;
 		System.out.println(SSN);
-		Manipulation.sendKeys(element, SSN);	                
+		Manipulation.sendKeys(element1, "131");
+		Manipulation.sendKeys(element2, ssn_2);	 
+		Manipulation.sendKeys(element3, ssn_3);	 
 		Manipulation.wait(driver, "1");
 		return SSN;
 	}
