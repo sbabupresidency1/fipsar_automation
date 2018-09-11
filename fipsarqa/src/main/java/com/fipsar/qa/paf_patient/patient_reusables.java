@@ -27,7 +27,18 @@ public class patient_reusables implements	OR {
 		Manipulation.sendKeys(patient_username,Directory.patient_username);
 		Manipulation.sendKeys(patient_password, Directory.patient_password);
 		Manipulation.click(login_button);
-		Manipulation.wait(driver, "5");        
+		Manipulation.wait(driver, "5"); 
+	    
+			try {
+			if(driver.findElement( By.id( "Old" ) ).isDisplayed())
+			{
+				WebElement webElement=driver.findElement(By.id("Old"));
+				Manipulation.click(webElement);
+				Manipulation.wait(driver, "5");
+			}	}	
+			catch(Exception e) {
+				Manipulation.wait(driver, "3");
+			}	
 		
 	}
 	/*
