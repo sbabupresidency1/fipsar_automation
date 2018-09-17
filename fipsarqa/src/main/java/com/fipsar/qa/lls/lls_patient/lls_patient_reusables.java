@@ -27,6 +27,7 @@ public class lls_patient_reusables implements	OR {
 		Manipulation.sendKeys(patient_username,Directory.lls_patient_userName);
 		Manipulation.sendKeys(patient_password, Directory.lls_patient_password);
 		Manipulation.click(login_button);
+		Manipulation.wait(driver, "3");
 		try {
 			if(driver.findElement( By.id( "Old" ) ).isDisplayed())
 			{
@@ -36,7 +37,7 @@ public class lls_patient_reusables implements	OR {
 			}	}	
 			catch(Exception e) {
 				Manipulation.wait(driver, "3");
-			}	     
+			}	
 	}
 	
 	/*
