@@ -78,6 +78,8 @@ public class Directory {
 	public static String WaitFor=null;
 	public static String yopmailurl=null;
 	public static String copayqa_reg_url=null;
+	public static String Coachesurl=null;
+	public static String OpsAdminurl=null;
 	public static String copayqa_login_url=null;
 	public static String Practitionerusername=null;
 	public static String patient_password=null;
@@ -124,6 +126,8 @@ public class Directory {
 				String headerText = localProperties.getProperty(			"fipsar.proj.header.text").trim();	
 				String projectDescription = localProperties.getProperty(			"fipsar.proj.description").trim();
 				String takeScreenShot = localProperties.getProperty(			"fipsar.reports.takescreenshot").trim();
+				String configReports = localProperties.getProperty(			"fipsar.reports.configurationreports").trim();
+				String excelReport = localProperties.getProperty("fipsar.reports.excel")			.trim();
 				String contExectution = localProperties.getProperty(			"fipsar.reports.continueExecutionAfterStepFailed").trim();
 				String reExecution = localProperties.getProperty(   "fipsar.failures.reexecution").trim();
 
@@ -148,7 +152,9 @@ public class Directory {
 				uploadFilePath=testCasePath+"/"+uploadPath+"/";
 				String logo1 = localProperties.getProperty("fipsar.proj.header.logo")			.trim();
 				logo=uploadFilePath+logo1;
-		
+
+				GRID_IP = localProperties.getProperty(			"fipsar.Grid").trim().toLowerCase();
+
 				//URLs and Credentials for PAF  - CPR
 				Properties urlsProperties = new Properties();
 				System.out.println("testCasePath: "+testCasePath);
@@ -161,7 +167,6 @@ public class Directory {
 				provider_username=urlsProperties.getProperty("provider_userName").trim();
 				provider_password=urlsProperties.getProperty("provider_password").trim();
 				pharmacy_username=urlsProperties.getProperty("pharmacy_userName").trim();
-				
 				pharmacy_password=urlsProperties.getProperty("pharmacy_password").trim();
 				//LLS
 				lls_reg_url=urlsProperties.getProperty("lls_reg_url").trim();
@@ -194,8 +199,18 @@ public class Directory {
 						} catch (Exception localException1) {
 						}
 					}
-					
-					
+					if ((configReports != null) && (configReports.length() > 0)) {
+						try {
+							generateConfigReports = Boolean.parseBoolean(configReports);
+						} catch (Exception localException2) {
+						}
+					}
+					if ((excelReport != null) && (excelReport.length() > 0)) {
+						try {
+							generateExcelReports = Boolean.parseBoolean(excelReport);
+						} catch (Exception localException3) {
+						}
+					}
 					if ((contExectution != null) && (contExectution.length() > 0)) {
 						try {
 							continueExecutionAfterStepFailed = Boolean
